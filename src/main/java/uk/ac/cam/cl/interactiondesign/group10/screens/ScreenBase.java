@@ -6,11 +6,11 @@ import javafx.stage.Stage;
 
 public class ScreenBase {
 
-  @FXML
-  private Node root;
+    @FXML
+    private Node root;
 
-  Stage getStage() {
-    return (Stage) root.getScene().getWindow();
-  }
+    Stage getStage() {
+        return (Stage) root.getScene().getWindow();
+    }
 
 }

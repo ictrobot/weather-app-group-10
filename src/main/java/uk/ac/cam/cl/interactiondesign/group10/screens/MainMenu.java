@@ -1,43 +1,46 @@
 package uk.ac.cam.cl.interactiondesign.group10.screens;
 
-import com.google.maps.model.LatLng;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
-import uk.ac.cam.cl.interactiondesign.group10.backend.GetWeather;
-import uk.ac.cam.cl.interactiondesign.group10.backend.WeatherData;
+import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 
 import java.io.IOException;
 import java.net.URL;
 
 public class MainMenu extends ScreenBase {
 
-  public static final URL FXML_URL = MainMenu.class.getResource("MainMenu.fxml");
+    public static final URL FXML_URL = MainMenu.class.getResource("MainMenu.fxml");
 
-  public static void showMainMenu(ScreenBase current, LatLng location) {
-    try {
-      FXMLLoader loader = new FXMLLoader(FXML_URL);
-      Parent root = loader.load();
-      MainMenu mainMenu = loader.getController();
-      mainMenu.initialize(location);
+    static void showMainMenu(ScreenBase current, Location location) {
+        try {
+            FXMLLoader loader = new FXMLLoader(FXML_URL);
+            Parent root = loader.load();
+            MainMenu mainMenu = loader.getController();
+            mainMenu.initialize(location);
 
-      current.getStage().setScene(new Scene(root));
-    } catch (IOException e) {
-      throw new RuntimeException("Failed to load mainmenu", e);
+            current.getStage().setScene(new Scene(root));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load mainmenu", e);
+        }
     }
-  }
 
-  WeatherData data;
 
-  @FXML
-  private Text currentTempText;
+    Location location;
 
-  private void initialize(LatLng location) {
-    data = GetWeather.getWeather(location);
+    @FXML
+    private Text textCurrentLocation;
 
-    currentTempText.setText(data.temperature + "°C");
-  }
+    @FXML
+    private Text textCurrentTemp;
+
+    private void initialize(Location location) {
+        this.location = location;
+
+        textCurrentLocation.setText(location.getName());
+        textCurrentTemp.setText(location.getWeatherData().temperature + "°C");
+    }
 
 }
