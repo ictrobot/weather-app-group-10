@@ -11,6 +11,18 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs += "src/main/java"
+            includes += "**/*.fxml"
+            includes += "**/*.properties"
+        }
+    }
+}
+
 dependencies {
-    
+    implementation 'com.google.maps:google-maps-services:0.9.3'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+    implementation 'com.mashape.unirest:unirest-java:1.4.9'
 }

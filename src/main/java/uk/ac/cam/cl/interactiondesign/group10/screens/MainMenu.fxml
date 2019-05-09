@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.screens.MainMenu">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Weather" />
+      <HBox>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature:" />
+            <Text fx:id="currentTempText" strokeType="OUTSIDE" strokeWidth="0.0" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
