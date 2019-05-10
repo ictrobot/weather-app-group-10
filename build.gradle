@@ -15,14 +15,28 @@ sourceSets {
     main {
         resources {
             srcDirs += "src/main/java"
+            // include fxml files required for GUIs
             includes += "**/*.fxml"
-            includes += "**/*.properties"
+            // include secrets.properties which includes the API Keys
+            includes += "secrets.properties"
         }
     }
 }
 
 dependencies {
-    implementation 'com.google.maps:google-maps-services:0.9.3'
-    implementation 'org.slf4j:slf4j-simple:1.7.25'
-    implementation 'com.mashape.unirest:unirest-java:1.4.9'
+    compile 'com.google.maps:google-maps-services:0.9.3'
+    compile 'org.slf4j:slf4j-simple:1.7.25'
+    compile 'com.mashape.unirest:unirest-java:1.4.9'
+}
+
+jar {
+    from {
+        // include required libraries in jar
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude("META-INF/")
+    manifest {
+        attributes "Main-Class": "uk.ac.cam.cl.interactiondesign.group10.Main"
+    }
+    archiveName = "group10.jar"
 }
