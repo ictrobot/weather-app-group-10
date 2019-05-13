@@ -5,10 +5,12 @@ import java.util.Properties;
 
 public class APIKeys {
 
+    private static final String PLACEHOLDER = "[PUT API KEY HERE]";
+
     static String GOOGLE_GEOCODING;
     static String DARKSKY_WEATHER;
 
-    public static void loadAPIKeys() {
+    public static void loadAPIKeys() throws APIException {
         String google = null, darkSky = null;
 
         try (InputStream is = APIKeys.class.getResourceAsStream("/secrets.properties")) {
@@ -17,12 +19,17 @@ public class APIKeys {
             google = properties.getProperty("GOOGLE_GEOCODING_API_KEY");
             darkSky = properties.getProperty("DARK_SKY_API_KEY");
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new APIException("Failed to read API Keys", e);
         }
-        if (google == null || darkSky == null || google.isEmpty() || darkSky.isEmpty())
-            throw new RuntimeException("Missing API Keys");
+        if (checkInvalid(google) || checkInvalid(darkSky)) {
+            throw new APIException("Invalid/Missing API Keys");
+        }
         GOOGLE_GEOCODING = google;
         DARKSKY_WEATHER = darkSky;
+    }
+
+    private static boolean checkInvalid(String key) {
+        return key == null || PLACEHOLDER.equals(key) || key.isEmpty();
     }
 
 }
