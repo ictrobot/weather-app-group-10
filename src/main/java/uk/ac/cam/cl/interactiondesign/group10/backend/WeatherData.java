@@ -95,7 +95,7 @@ public class WeatherData {
          * @return string representing precipitation probability in the format "xx.x%"
          */
         public String getPrecipitationString() {
-            return String.format("%.1f%%", precipitationProbability);
+            return String.format("%.1f%%", precipitationProbability * 100);
         }
     }
 }
