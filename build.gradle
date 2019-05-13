@@ -19,6 +19,8 @@ sourceSets {
             includes += "**/*.fxml"
             // include secrets.properties which includes the API Keys
             includes += "secrets.properties"
+            // include needed images
+            includes += "images/"
         }
     }
 }

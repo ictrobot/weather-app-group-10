@@ -18,6 +18,8 @@ public class Main extends Application {
         MainMenu.show(primaryStage, Location.detectLocation());
 
         primaryStage.setTitle("Weather App");
+        primaryStage.setMinWidth(360);
+        primaryStage.setMinHeight(640);
         primaryStage.show();
     }
 

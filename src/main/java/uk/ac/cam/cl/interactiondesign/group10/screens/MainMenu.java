@@ -48,6 +48,14 @@ public class MainMenu extends ScreenBase {
         ActivityScreen.show(getStage(), location);
     }
 
+    public void showHourly() {
+        ScrollScreen.show(getStage(), location, ScrollScreen.ScrollScreenType.HOURLY);
+    }
+
+    public void showDaily() {
+        ScrollScreen.show(getStage(), location, ScrollScreen.ScrollScreenType.DAILY);
+    }
+
     public void changeLocation() {
         LocationScreen.show(getStage());
     }

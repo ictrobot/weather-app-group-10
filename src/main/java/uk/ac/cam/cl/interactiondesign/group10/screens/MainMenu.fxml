@@ -16,6 +16,8 @@
             </children>
         </HBox>
         <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#showActivity" text="Activity Suggestion"/>
+        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#showHourly" text="Hourly Forecast"/>
+        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#showDaily" text="Daily Forecast"/>
         <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#changeLocation" text="Change Location"/>
     </children>
 </VBox>
