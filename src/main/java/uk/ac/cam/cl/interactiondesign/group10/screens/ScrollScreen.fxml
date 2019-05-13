@@ -4,18 +4,32 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<VBox fx:id="root" prefHeight="800" prefWidth="450" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.screens.ScrollScreen">
+<GridPane fx:id="root" prefHeight="800" prefWidth="450" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.screens.ScrollScreen">
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="100" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="NEVER" />
+        <RowConstraints vgrow="NEVER" />
+        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints vgrow="NEVER" />
+    </rowConstraints>
     <children>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="textTitle" />
-        <Text fx:id="textCurrentLocation" strokeType="OUTSIDE" strokeWidth="0.0" />
-
-      <ScrollPane prefHeight="200.0" prefWidth="Infinity">
-         <content>
-            <VBox fx:id="scrollContents" prefHeight="200.0" prefWidth="100.0" />
-         </content>
-      </ScrollPane>
-
-        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" text="Back" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="textTitle" GridPane.rowIndex="0" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="textCurrentLocation" GridPane.rowIndex="1" />
+        <ScrollPane prefHeight="200.0" fitToWidth="true" hbarPolicy="NEVER" GridPane.rowIndex="2" >
+            <content>
+                <VBox fx:id="scrollContents"/>
+            </content>
+        </ScrollPane>
+        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" text="Back" GridPane.rowIndex="3" />
     </children>
-</VBox>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+</GridPane>

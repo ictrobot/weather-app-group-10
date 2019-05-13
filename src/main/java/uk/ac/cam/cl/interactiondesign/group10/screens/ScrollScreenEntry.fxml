@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.screens.ScrollScreenEntry">
+<GridPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.screens.ScrollScreenEntry">
   <columnConstraints>
-    <ColumnConstraints hgrow="ALWAYS" />
-    <ColumnConstraints hgrow="ALWAYS" />
-    <ColumnConstraints hgrow="ALWAYS" />
+    <ColumnConstraints percentWidth="40" />
+    <ColumnConstraints percentWidth="30" />
+    <ColumnConstraints percentWidth="30" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints/>
@@ -18,7 +18,7 @@
     <RowConstraints/>
   </rowConstraints>
    <children>
-      <ImageView fx:id="imageWeather" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.rowSpan="2" />
+      <ImageView fx:id="imageWeather" fitHeight="80.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.rowSpan="2" />
       <Text fx:id="textTime" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" />
       <Text fx:id="textConditions" strokeType="OUTSIDE" strokeWidth="0.0" text="Conditions" GridPane.columnIndex="1" GridPane.columnSpan="2" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature: " GridPane.columnIndex="1" GridPane.rowIndex="1" />
