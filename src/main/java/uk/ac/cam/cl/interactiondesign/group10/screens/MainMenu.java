@@ -40,9 +40,7 @@ public class MainMenu extends ScreenBase {
         this.location = location;
 
         textCurrentLocation.setText(location.getName());
-
-        // \u00B0 is the degrees symbol. Unicode literal used to avoid display issues
-        textCurrentTemp.setText(location.getWeatherData().temperature + "\u00B0C");
+        textCurrentTemp.setText(location.getWeatherData().current.getTemperatureString());
     }
 
 }
