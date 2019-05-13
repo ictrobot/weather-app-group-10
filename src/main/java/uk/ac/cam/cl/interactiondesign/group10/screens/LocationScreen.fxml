@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="179.0" prefWidth="559.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+<VBox fx:id="root"  prefHeight="800" prefWidth="450" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.screens.LocationScreen">
     <children>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome"/>

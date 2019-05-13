@@ -2,14 +2,12 @@ package uk.ac.cam.cl.interactiondesign.group10;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIKeys;
-import uk.ac.cam.cl.interactiondesign.group10.screens.LocationScreen;
+import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
+import uk.ac.cam.cl.interactiondesign.group10.screens.MainMenu;
 
 public class Main extends Application {
 
@@ -17,9 +15,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         tryLoadApiKeys();
 
-        Parent root = FXMLLoader.load(LocationScreen.FXML_URL);
+        MainMenu.show(primaryStage, Location.detectLocation());
+
         primaryStage.setTitle("Weather App");
-        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

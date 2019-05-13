@@ -3,7 +3,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<VBox fx:id="root" prefHeight="68.0" prefWidth="174.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+<?import javafx.scene.control.Button?>
+<VBox fx:id="root" prefHeight="800" prefWidth="450" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.screens.MainMenu">
     <children>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current weather in"/>
@@ -14,5 +15,7 @@
                 <Text fx:id="textCurrentTemp" strokeType="OUTSIDE" strokeWidth="0.0"/>
             </children>
         </HBox>
+        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#showActivity" text="Activity Suggestion"/>
+        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#changeLocation" text="Change Location"/>
     </children>
 </VBox>
