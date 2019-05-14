@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 
@@ -55,7 +54,7 @@ public class MainMenu extends ScreenBase {
     }
 
     public void changeLocation() {
-        LocationScreen.show(getStage(), location);
+        getStage().setScene(new Scene(new LocationView(location)));
     }
 
 }

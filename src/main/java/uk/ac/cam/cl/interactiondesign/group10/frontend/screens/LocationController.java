@@ -1,49 +1,27 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 
-import java.io.IOException;
-import java.net.URL;
+public class LocationController extends ScreenBase {
 
-public class LocationScreen extends ScreenBase {
+    private final Location location;
+    StringProperty searchStringProperty;
 
-    private static final URL FXML_URL = MainMenu.class.getResource("LocationScreen.fxml");
-
-    static void show(Stage stage, Location location) {
-        try {
-            FXMLLoader loader = new FXMLLoader(FXML_URL);
-            Parent root = loader.load();
-            LocationScreen locationScreen = loader.getController();
-            locationScreen.initialize(location);
-            stage.setScene(new Scene(root));
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load MainMenu", e);
-        }
+    LocationController(Location previousLocation) {
+        location = previousLocation;
     }
 
-    @FXML
-    private TextField locationInput;
-    private Location location;
-
-    private void initialize(Location location) {
-        this.location = location;
-    }
-
-    public void goBack() {
+    public void goBack(ActionEvent event) {
         MainMenu.show(getStage(), location);
     }
 
-    public void doSearch() {
-        String searchString = locationInput.getCharacters().toString();
+    public void doSearch(ActionEvent event) {
+        String searchString = searchStringProperty.get();
         // prevent searching an empty string
         if (searchString.isEmpty()) return;
 
@@ -67,7 +45,7 @@ public class LocationScreen extends ScreenBase {
         }
     }
 
-    public void doLocate() {
+    public void doLocate(ActionEvent event) {
         Location location = null;
         Dialog loadingDialog = showLoadingDialog();
         try {

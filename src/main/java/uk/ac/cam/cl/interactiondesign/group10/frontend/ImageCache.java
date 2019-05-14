@@ -15,7 +15,7 @@ public class ImageCache {
     if (CACHE.containsKey(imagePath)) {
       return CACHE.get(imagePath);
     }
-    try (InputStream imageStream = ImageCache.class.getResourceAsStream(imagePath)) {
+    try (InputStream imageStream = ImageCache.class.getResourceAsStream("/images/" + imagePath)) {
       Image image = new Image(imageStream);
       CACHE.put(imagePath, image);
       return image;
@@ -28,9 +28,9 @@ public class ImageCache {
   }
 
   public static Image weatherImage(String weatherIcon) {
-    Image icon = loadImage("/images/weather/" + weatherIcon + ".png");
+    Image icon = loadImage("weather/" + weatherIcon + ".png");
     if (icon == null) {
-      icon = loadImage("/images/weather/unknown.png");
+      icon = loadImage("weather/unknown.png");
     }
     return icon;
   }
