@@ -4,12 +4,13 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <VBox fx:id="root" prefHeight="800" prefWidth="450" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.frontend.screens.ActivityScreen">
     <children>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activity Suggestion for"/>
-        <Text fx:id="textCurrentLocation" strokeType="OUTSIDE" strokeWidth="0.0"/>
+        <AnchorPane fx:id="currentInfoPane" />
         <Text fx:id="textCurrentActivity" strokeType="OUTSIDE" strokeWidth="0.0"/>
 
         <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" text="Back"/>

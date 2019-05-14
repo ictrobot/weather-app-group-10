@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
@@ -32,15 +33,16 @@ public class ActivityScreen extends ScreenBase {
     private Location location;
 
     @FXML
-    private Text textCurrentLocation;
+    private Text textCurrentActivity;
 
     @FXML
-    private Text textCurrentActivity;
+    private AnchorPane currentInfoPane;
 
     private void initialize(Location location) {
         this.location = location;
 
-        textCurrentLocation.setText(location.getName());
+        Parent info = CurrentInfoPanel.load(location);
+        currentInfoPane.getChildren().add(info);
 
         String activityText = Activities.getActivity(location.getWeatherData().current);
         textCurrentActivity.setText(activityText);

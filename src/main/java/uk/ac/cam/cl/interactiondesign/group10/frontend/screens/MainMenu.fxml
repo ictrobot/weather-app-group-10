@@ -6,16 +6,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.AnchorPane?>
 <VBox fx:id="root" prefHeight="800" prefWidth="450" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.frontend.screens.MainMenu">
     <children>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current weather in" />
         <Text fx:id="textCurrentLocation" strokeType="OUTSIDE" strokeWidth="0.0" />
-        <HBox>
-            <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature: " />
-                <Text fx:id="textCurrentTemp" strokeType="OUTSIDE" strokeWidth="0.0" />
-            </children>
-        </HBox>
+        <AnchorPane fx:id="currentInfoPane" />
         <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#showActivity" text="Activity Suggestion" />
         <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#showHourly" text="Hourly Forecast" />
         <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#showDaily" text="Next Few Days" />

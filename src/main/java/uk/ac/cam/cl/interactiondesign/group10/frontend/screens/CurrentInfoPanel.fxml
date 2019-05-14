@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.image.Image?>
+<GridPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.frontend.screens.CurrentInfoPanel">
+  <columnConstraints>
+    <ColumnConstraints percentWidth="25" />
+    <ColumnConstraints percentWidth="50" />
+    <ColumnConstraints percentWidth="25" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+  </rowConstraints>
+   <children>
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="textCurrentLocation" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" />
+       <ImageView fx:id="imageWeather" fitHeight="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.halignment="CENTER" />
+       <ImageView fx:id="imageThermometer" fitHeight="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.rowSpan="3" GridPane.valignment="BOTTOM" >
+           <image>
+               <Image url="images/other/thermometer.png" />
+           </image>
+       </ImageView>
+       <ImageView fx:id="imageRainDrop" fitHeight="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="3" GridPane.valignment="BOTTOM" >
+           <image>
+               <Image url="images/other/raindrop.png" />
+           </image>
+       </ImageView>
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="textConditions" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.halignment="CENTER" />
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature: " GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.halignment="CENTER" />
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precipitation: " GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.halignment="CENTER" />
+       <Text fx:id="textTemperature" strokeType="OUTSIDE" strokeWidth="0.0" text="TheTemp" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.halignment="CENTER" />
+       <Text fx:id="textPrecipitation" strokeType="OUTSIDE" strokeWidth="0.0" text="ThePrecipitation" GridPane.columnIndex="2" GridPane.rowIndex="6" GridPane.halignment="CENTER" />
+   </children>
+</GridPane>
