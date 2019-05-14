@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.location.LocationView;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll.DailyView;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll.HourlyView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,11 +49,11 @@ public class MainMenu extends ScreenBase {
     }
 
     public void showHourly() {
-        ScrollScreen.show(getStage(), location, ScrollScreen.ScrollScreenType.HOURLY);
+        getStage().setScene(new Scene(new HourlyView(location)));
     }
 
     public void showDaily() {
-        ScrollScreen.show(getStage(), location, ScrollScreen.ScrollScreenType.DAILY);
+        getStage().setScene(new Scene(new DailyView(location)));
     }
 
     public void changeLocation() {

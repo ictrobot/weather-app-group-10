@@ -1,30 +1,28 @@
-package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.location;
 
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseView;
 
-public class LocationView extends GridPane {
+public class LocationView extends BaseView {
 
-    LocationController controller;
+    private LocationController controller;
 
     public LocationView(Location currentLocation) {
-        controller = new LocationController(currentLocation);
-        initializeGrid();
-        makeElements();
-        setPadding(new Insets(20f));
+        controller = new LocationController(this, currentLocation);
+        makeGrid();
+        populateGrid();
     }
 
-    private void initializeGrid() {
+    private void makeGrid() {
         // one column
         ColumnConstraints columnConstraints = new ColumnConstraints();
         columnConstraints.setHalignment(HPos.CENTER);
@@ -40,7 +38,7 @@ public class LocationView extends GridPane {
         }
     }
 
-    private void makeElements() {
+    private void populateGrid() {
         Text title = new Text("Change location");
         add(title, 0, 0);
 
@@ -66,8 +64,7 @@ public class LocationView extends GridPane {
         add(search, 0, 5);
 
         Button back = new Button("Back");
-        back.setOnAction(controller::goBack);
+        back.setOnAction(controller::gotoMainMenu);
         add(back, 0, 6);
     }
-
 }

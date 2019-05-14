@@ -1,4 +1,4 @@
-package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.location;
 
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -6,21 +6,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Dialog;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseController;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.MainMenu;
 
-public class LocationController extends ScreenBase {
+class LocationController extends BaseController {
 
-    private final Location location;
     StringProperty searchStringProperty;
 
-    LocationController(Location previousLocation) {
-        location = previousLocation;
+    LocationController(LocationView view, Location previousLocation) {
+        super(view, previousLocation);
     }
 
-    public void goBack(ActionEvent event) {
-        MainMenu.show(getStage(), location);
-    }
-
-    public void doSearch(ActionEvent event) {
+    void doSearch(ActionEvent event) {
         String searchString = searchStringProperty.get();
         // prevent searching an empty string
         if (searchString.isEmpty()) return;
@@ -45,7 +42,7 @@ public class LocationController extends ScreenBase {
         }
     }
 
-    public void doLocate(ActionEvent event) {
+    void doLocate(ActionEvent event) {
         Location location = null;
         Dialog loadingDialog = showLoadingDialog();
         try {
