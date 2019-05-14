@@ -47,8 +47,9 @@ class EntryView extends GridPane {
         controller.textTime = time.textProperty();
 
         Text conditions = new Text();
+        conditions.setWrappingWidth(200);
         add(conditions, 1, 0, 2, 1);
-        setHalignment(conditions, HPos.CENTER);
+        setHalignment(conditions, HPos.LEFT);
         controller.textConditions = conditions.textProperty();
 
         add(new Text("Temperature: "), 1, 1);

@@ -39,6 +39,7 @@ abstract class ForecastView extends BaseView {
         controller.locationText = currentLocation.textProperty();
 
         VBox scrollInner = new VBox();
+        scrollInner.setSpacing(25);
         ScrollPane scrollPane = new ScrollPane(scrollInner);
         scrollPane.setFitToWidth(true);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);

@@ -44,7 +44,7 @@ public class LocationView extends BaseView {
 
         ImageView ukMap = new ImageView(ImageCache.loadImage("other/uk.png"));
         ukMap.setPreserveRatio(true);
-        ukMap.fitHeightProperty().bind(heightProperty().multiply(0.75f));
+        ukMap.fitHeightProperty().bind(heightProperty().multiply(0.5));
         add(ukMap, 0, 1);
 
         Button useMyLocation = new Button("Use my location");

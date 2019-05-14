@@ -14,10 +14,15 @@ public abstract class BaseView extends GridPane {
 
     public BaseView() {
         setPadding(new Insets(20f));
+
         setPrefWidth(9 * 40);
         setPrefHeight(16 * 40);
+
         setMinWidth(9 * 30);
         setMinHeight(16 * 30);
+
+        setHgap(10);
+        setVgap(10);
     }
 
     void setupBackgroundColour(WeatherData.WeatherDataPoint current) {
