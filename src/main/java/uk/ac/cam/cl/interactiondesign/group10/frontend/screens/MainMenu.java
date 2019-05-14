@@ -8,8 +8,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.location.LocationView;
-import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll.DailyView;
-import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll.HourlyView;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.forecast.DailyView;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.forecast.HourlyView;
 
 import java.io.IOException;
 import java.net.URL;

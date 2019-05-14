@@ -1,4 +1,4 @@
-package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.forecast;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;

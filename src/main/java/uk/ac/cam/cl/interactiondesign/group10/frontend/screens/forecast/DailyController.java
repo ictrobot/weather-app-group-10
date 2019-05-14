@@ -1,13 +1,13 @@
-package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.forecast;
 
 import javafx.scene.image.Image;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.backend.WeatherData;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 
-class DailyController extends ScrollController {
+class DailyController extends ForecastController {
 
-    DailyController(ScrollView view, Location currentLocation) {
+    DailyController(ForecastView view, Location currentLocation) {
         super(view, currentLocation);
     }
 

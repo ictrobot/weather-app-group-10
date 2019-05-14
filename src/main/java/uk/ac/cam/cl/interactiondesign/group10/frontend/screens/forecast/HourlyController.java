@@ -1,11 +1,11 @@
-package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.forecast;
 
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.backend.WeatherData;
 
-class HourlyController extends ScrollController {
+class HourlyController extends ForecastController {
 
-    HourlyController(ScrollView view, Location currentLocation) {
+    HourlyController(ForecastView view, Location currentLocation) {
         super(view, currentLocation);
     }
 

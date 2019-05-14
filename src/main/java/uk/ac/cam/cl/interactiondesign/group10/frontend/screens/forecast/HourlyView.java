@@ -1,8 +1,8 @@
-package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.forecast;
 
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 
-public class HourlyView extends ScrollView {
+public class HourlyView extends ForecastView {
 
     public HourlyView(Location currentLocation) {
         controller = new HourlyController(this, currentLocation);

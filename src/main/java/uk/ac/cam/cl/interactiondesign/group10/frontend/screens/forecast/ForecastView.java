@@ -1,4 +1,4 @@
-package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.scroll;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.forecast;
 
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
@@ -10,9 +10,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseView;
 
-abstract class ScrollView extends BaseView {
+abstract class ForecastView extends BaseView {
 
-    protected ScrollController controller;
+    protected ForecastController controller;
 
     void makeGrid() {
         // one column
