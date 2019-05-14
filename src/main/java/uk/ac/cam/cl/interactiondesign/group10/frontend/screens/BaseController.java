@@ -14,6 +14,8 @@ public abstract class BaseController {
     protected BaseController(BaseView view, Location currentLocation) {
         this.view = view;
         this.currentLocation = currentLocation;
+
+        view.setupBackgroundColour(currentLocation.getWeatherData().current);
     }
 
     protected Stage getStage() {
