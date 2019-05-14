@@ -3,14 +3,13 @@ package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.backend.WeatherData;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 
 public class CurrentInfoPanel extends ScreenBase {
@@ -51,17 +50,7 @@ public class CurrentInfoPanel extends ScreenBase {
         textConditions.setText(current.darkSkySummary);
         textTemperature.setText(current.getTemperatureString());
         textPrecipitation.setText(current.getPrecipitationString());
-
-        try (InputStream imageStream = ScrollScreenEntry.class.getResourceAsStream("/images/weather/" + current.darkSkyIcon +".png")) {
-            imageWeather.setImage(new Image(imageStream));
-        }
-        catch (NullPointerException n) {
-            n.printStackTrace();
-            System.out.println("The weather recieved does not have an icon");
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        imageWeather.setImage(ImageCache.weatherImage(current.darkSkyIcon));
     }
 
 }
