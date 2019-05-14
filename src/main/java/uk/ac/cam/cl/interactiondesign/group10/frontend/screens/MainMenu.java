@@ -57,7 +57,7 @@ public class MainMenu extends ScreenBase {
     }
 
     public void changeLocation() {
-        LocationScreen.show(getStage());
+        LocationScreen.show(getStage(), location);
     }
 
 }

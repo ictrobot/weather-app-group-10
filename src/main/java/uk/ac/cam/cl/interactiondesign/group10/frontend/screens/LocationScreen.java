@@ -18,10 +18,12 @@ public class LocationScreen extends ScreenBase {
 
     private static final URL FXML_URL = MainMenu.class.getResource("LocationScreen.fxml");
 
-    static void show(Stage stage) {
+    static void show(Stage stage, Location location) {
         try {
             FXMLLoader loader = new FXMLLoader(FXML_URL);
             Parent root = loader.load();
+            LocationScreen locationScreen = loader.getController();
+            locationScreen.initialize(location);
             stage.setScene(new Scene(root));
         } catch (IOException e) {
             throw new RuntimeException("Failed to load MainMenu", e);
@@ -30,6 +32,15 @@ public class LocationScreen extends ScreenBase {
 
     @FXML
     private TextField locationInput;
+    private Location location;
+
+    private void initialize(Location location) {
+        this.location = location;
+    }
+
+    public void goBack() {
+        MainMenu.show(getStage(), location);
+    }
 
     public void doSearch() {
         String searchString = locationInput.getCharacters().toString();
