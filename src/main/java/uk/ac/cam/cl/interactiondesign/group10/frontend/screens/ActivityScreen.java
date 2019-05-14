@@ -42,9 +42,7 @@ public class ActivityScreen extends ScreenBase {
 
         textCurrentLocation.setText(location.getName());
 
-        String currentIcon = location.getWeatherData().current.darkSkyIcon;
-        String activityText = Activities.getActivity(currentIcon);
-        System.out.println(currentIcon + " " + activityText);
+        String activityText = Activities.getActivity(location.getWeatherData().current);
         textCurrentActivity.setText(activityText);
     }
 
