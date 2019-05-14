@@ -53,9 +53,14 @@ public class ScrollScreenEntry extends ScreenBase {
         textTemperature.setText(data.getTemperatureString());
         textPrecipitation.setText(data.getPrecipitationString());
 
-        try (InputStream imageStream = ScrollScreenEntry.class.getResourceAsStream("/images/weather/example.png")) {
+        try (InputStream imageStream = ScrollScreenEntry.class.getResourceAsStream("/images/weather/" + data.darkSkyIcon +".png")) {
             imageWeather.setImage(new Image(imageStream));
-        } catch (IOException e) {
+        }
+        catch (NullPointerException n) {
+            n.printStackTrace();
+            System.out.println("The weather recieved does not have an icon");
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
