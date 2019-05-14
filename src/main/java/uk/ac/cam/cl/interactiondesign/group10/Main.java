@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIKeys;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current.MainView;
 
 public class Main extends Application {
@@ -22,6 +23,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(new MainView(startingLocation)));
         primaryStage.setMinWidth(9 * 30);
         primaryStage.setMinHeight(16 * 30);
+        primaryStage.getIcons().add(ImageCache.weatherImage("cloudy"));
         primaryStage.show();
     }
 
