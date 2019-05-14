@@ -7,7 +7,7 @@ import javafx.scene.control.Dialog;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseController;
-import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.MainMenu;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current.MainView;
 
 class LocationController extends BaseController {
 
@@ -38,7 +38,7 @@ class LocationController extends BaseController {
             alert.setContentText("Please try entering another location");
             alert.showAndWait();
         } else {
-            MainMenu.show(getStage(), location);
+            changeScreen(new MainView(location));
         }
     }
 
@@ -59,7 +59,7 @@ class LocationController extends BaseController {
             alert.setContentText("Please try again or enter your location manually");
             alert.showAndWait();
         } else {
-            MainMenu.show(getStage(), location);
+            changeScreen(new MainView(location));
         }
     }
 

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current.MainView;
 
 public abstract class BaseController {
 
@@ -24,6 +25,6 @@ public abstract class BaseController {
     }
 
     public void gotoMainMenu(ActionEvent event) {
-        MainMenu.show(getStage(), currentLocation);
+        changeScreen(new MainView(currentLocation));
     }
 }
