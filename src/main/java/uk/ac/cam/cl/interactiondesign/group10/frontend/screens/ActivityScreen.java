@@ -1,4 +1,4 @@
-package uk.ac.cam.cl.interactiondesign.group10.screens;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.Activities;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,10 +34,18 @@ public class ActivityScreen extends ScreenBase {
     @FXML
     private Text textCurrentLocation;
 
+    @FXML
+    private Text textCurrentActivity;
+
     private void initialize(Location location) {
         this.location = location;
 
         textCurrentLocation.setText(location.getName());
+
+        String currentIcon = location.getWeatherData().current.darkSkyIcon;
+        String activityText = Activities.getActivity(currentIcon);
+        System.out.println(currentIcon + " " + activityText);
+        textCurrentActivity.setText(activityText);
     }
 
     public void goBack() {

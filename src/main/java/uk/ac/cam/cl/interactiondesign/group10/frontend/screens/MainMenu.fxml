@@ -7,7 +7,7 @@
 <?import javafx.geometry.Insets?>
 
 <VBox fx:id="root" prefHeight="800" prefWidth="450" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.screens.MainMenu">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.cl.interactiondesign.group10.frontend.screens.MainMenu">
     <children>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current weather in"/>
         <Text fx:id="textCurrentLocation" strokeType="OUTSIDE" strokeWidth="0.0"/>

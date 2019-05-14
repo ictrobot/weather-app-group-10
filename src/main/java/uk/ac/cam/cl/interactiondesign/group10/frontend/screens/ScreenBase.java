@@ -1,4 +1,4 @@
-package uk.ac.cam.cl.interactiondesign.group10.screens;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;

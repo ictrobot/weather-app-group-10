@@ -1,4 +1,4 @@
-package uk.ac.cam.cl.interactiondesign.group10.screens;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

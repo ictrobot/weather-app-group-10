@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIKeys;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
-import uk.ac.cam.cl.interactiondesign.group10.screens.MainMenu;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.MainMenu;
 
 public class Main extends Application {
 
