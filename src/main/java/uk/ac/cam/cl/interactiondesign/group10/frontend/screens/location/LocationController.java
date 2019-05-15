@@ -1,49 +1,24 @@
-package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
+package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.location;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseController;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current.MainView;
 
-import java.io.IOException;
-import java.net.URL;
+class LocationController extends BaseController {
 
-public class LocationScreen extends ScreenBase {
+    StringProperty searchStringProperty;
 
-    private static final URL FXML_URL = MainMenu.class.getResource("LocationScreen.fxml");
-
-    static void show(Stage stage, Location location) {
-        try {
-            FXMLLoader loader = new FXMLLoader(FXML_URL);
-            Parent root = loader.load();
-            LocationScreen locationScreen = loader.getController();
-            locationScreen.initialize(location);
-            stage.setScene(new Scene(root));
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load MainMenu", e);
-        }
+    LocationController(LocationView view, Location previousLocation) {
+        super(view, previousLocation);
     }
 
-    @FXML
-    private TextField locationInput;
-    private Location location;
-
-    private void initialize(Location location) {
-        this.location = location;
-    }
-
-    public void goBack() {
-        MainMenu.show(getStage(), location);
-    }
-
-    public void doSearch() {
-        String searchString = locationInput.getCharacters().toString();
+    void doSearch(ActionEvent event) {
+        String searchString = searchStringProperty.get();
         // prevent searching an empty string
         if (searchString.isEmpty()) return;
 
@@ -63,11 +38,11 @@ public class LocationScreen extends ScreenBase {
             alert.setContentText("Please try entering another location");
             alert.showAndWait();
         } else {
-            MainMenu.show(getStage(), location);
+            changeScreen(new MainView(location));
         }
     }
 
-    public void doLocate() {
+    void doLocate(ActionEvent event) {
         Location location = null;
         Dialog loadingDialog = showLoadingDialog();
         try {
@@ -84,7 +59,7 @@ public class LocationScreen extends ScreenBase {
             alert.setContentText("Please try again or enter your location manually");
             alert.showAndWait();
         } else {
-            MainMenu.show(getStage(), location);
+            changeScreen(new MainView(location));
         }
     }
 

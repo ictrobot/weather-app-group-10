@@ -2,12 +2,14 @@ package uk.ac.cam.cl.interactiondesign.group10;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIKeys;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
-import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.MainMenu;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current.MainView;
 
 public class Main extends Application {
 
@@ -15,11 +17,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         tryLoadApiKeys();
 
-        MainMenu.show(primaryStage, Location.detectLocation());
+        Location startingLocation = Location.detectLocation();
 
         primaryStage.setTitle("Weather App");
-        primaryStage.setMinWidth(360);
-        primaryStage.setMinHeight(640);
+        primaryStage.setScene(new Scene(new MainView(startingLocation)));
+        primaryStage.setMinWidth(9 * 30);
+        primaryStage.setMinHeight(16 * 30);
+        primaryStage.getIcons().add(ImageCache.weatherImage("cloudy"));
         primaryStage.show();
     }
 
