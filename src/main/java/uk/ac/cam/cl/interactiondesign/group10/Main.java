@@ -19,15 +19,6 @@ public class Main extends Application {
         tryLoadApiKeys();
 
         Location startingLocation = Location.detectLocation();
-
-        Font.loadFont(Main.class.getResource("KGNeatlyPrinted.TTF").toExternalForm(), 10);
-
-        primaryStage.setTitle("Weather App");
-        primaryStage.setScene(new Scene(new MainView(startingLocation)));
-        primaryStage.setMinWidth(9 * 30);
-        primaryStage.setMinHeight(16 * 30);
-        primaryStage.getIcons().add(ImageCache.weatherImage("cloudy"));
-        primaryStage.show();
     }
 
     private void tryLoadApiKeys() {
