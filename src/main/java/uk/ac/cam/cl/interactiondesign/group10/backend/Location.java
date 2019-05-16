@@ -7,8 +7,13 @@ import com.google.maps.model.GeocodingResult;
 
 import java.io.IOException;
 
-public class Location {
+/**
+ * A location is made up of the latitude and longitude, which can be used to look up weather data
+ * and the place name
+ */
+public final class Location {
 
+    // Lazily initialize Google's geocoding API
     private static GeoApiContext GEOCODING_CONTEXT = null;
 
     private final double latitude;
@@ -44,15 +49,18 @@ public class Location {
 
     public static Location detectLocation() throws APIException {
         // Hi-Fi prototype is hard coded to presume Cambridge
+        // as it would be to difficult to use location data
         System.out.println("Location: User attempting to use geolocation (hard coded to Cambridge)");
-        return new Location("Cambridge", 52.20533700, 0.12181700);
+        return new Location("Cambridge, UK", 52.20533700, 0.12181700);
     }
 
     public static Location searchForLocation(String searchString) throws APIException {
+        // Lazily initialize Google's geocoding API
         if (GEOCODING_CONTEXT == null)
             GEOCODING_CONTEXT = new GeoApiContext.Builder().apiKey(APIKeys.GOOGLE_GEOCODING).build();
         System.out.println("Location: User attempting to search for \"" + searchString + "\"");
 
+        // Try fetching results from Google's API
         GeocodingResult[] results;
         try {
             results = GeocodingApi.geocode(GEOCODING_CONTEXT, searchString).await();
@@ -61,6 +69,9 @@ public class Location {
         }
         if (results == null) return null;
 
+        // Return the first response (if any) that is a "LOCALITY" which roughly limits it to towns etc
+        // prevents being able to type in something too general (e.g. United Kingdom)
+        // or too exact (e.g. Computer Lab University of Cambridge)
         for (GeocodingResult result : results) {
             for (AddressType type : result.types) {
                 // limit to towns

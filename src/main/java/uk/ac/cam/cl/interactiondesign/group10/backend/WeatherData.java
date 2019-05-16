@@ -12,7 +12,11 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.LongFunction;
 
-public class WeatherData {
+/**
+ * Weather data for a location is made up of the current data points, multiple hourly and daily data points
+ * And the timezone used to resolve the returned UNIX timestamps
+ */
+public final class WeatherData {
 
     private final TimeZone timezone;
     public final WeatherDataPoint current;
@@ -21,16 +25,22 @@ public class WeatherData {
 
     private WeatherData(JsonNode body) {
         JSONObject root = body.getObject();
+        // timezone needed to correctly understand timestamps
         timezone = TimeZone.getTimeZone(root.getString("timezone"));
+        // parse current data point
         current = new WeatherDataPoint(root.getJSONObject("currently"), t -> "Now");
 
+        // parse hourly data points
         List<WeatherDataPoint> hourlyList = new ArrayList<>();
         for (Object o : root.getJSONObject("hourly").getJSONArray("data")) {
+            // don't show any more than 24 hourly points, limits to a day
             if (hourlyList.size() >= 24) break;
+
             hourlyList.add(new WeatherDataPoint((JSONObject) o, this::resolveHourly));
         }
         this.hourly = Collections.unmodifiableList(hourlyList);
 
+        // parse daily data points
         List<WeatherDataPoint> dailyList = new ArrayList<>();
         for (Object o : root.getJSONObject("daily").getJSONArray("data")) {
             dailyList.add(new WeatherDataPoint((JSONObject) o, this::resolveDaily));
@@ -39,12 +49,16 @@ public class WeatherData {
     }
 
     private String resolveHourly(long timestamp) {
+        // used to convert timestamps to understandable strings for hourly forecasts
+        // returns a string like "At 1:00AM:"
         DateFormat hourly = new SimpleDateFormat("haa");
         hourly.setTimeZone(timezone);
         return "At " + hourly.format(new Date(timestamp)) + ":";
     }
 
     private String resolveDaily(long timestamp) {
+        // used to convert timestamps to understandable strings for daily forecasts
+        // returns a string like "On 20/05:"
         DateFormat daily = new SimpleDateFormat("dd/MM");
         daily.setTimeZone(timezone);
         return "On " + daily.format(new Date(timestamp)) + ":";
@@ -66,7 +80,10 @@ public class WeatherData {
         }
     }
 
-    public class WeatherDataPoint {
+    /**
+     * Represents the weather forecast at a certain point in time
+     */
+    public final class WeatherDataPoint {
         public final long timestamp;
         public final String timestampText;
         public final String darkSkySummary;
@@ -76,11 +93,17 @@ public class WeatherData {
 
         private WeatherDataPoint(JSONObject datapoint, LongFunction<String> timestampTextFn) {
             timestamp = datapoint.getLong("time") * 1000; // multiply by 1000 to turn in ms
-            timestampText = timestampTextFn.apply(timestamp);
             darkSkySummary = datapoint.getString("summary");
-            darkSkyIcon = datapoint.getString("icon"); // TODO show high and low daily temperature?
-            temperature = datapoint.optDouble("temperature", datapoint.optDouble("temperatureHigh"));
+            darkSkyIcon = datapoint.getString("icon");
             precipitationProbability = datapoint.getDouble("precipProbability");
+
+            // use temperature if available. On daily forecasts the low and high temperatures are given instead
+            // so fall back to using the daily high temperature
+            temperature = datapoint.optDouble("temperature", datapoint.optDouble("temperatureHigh"));
+
+            // function passed in as a parameter used to convert the timestamp into user understandable text
+            // different function specified for each type of data point
+            timestampText = timestampTextFn.apply(timestamp);
         }
 
         /**
