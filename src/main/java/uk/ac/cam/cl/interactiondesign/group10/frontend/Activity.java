@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Activities {
+public class Activity {
 
   private static final Map<String, List<Activity>> activityStrings = new HashMap<>();
   private static final Activity DEFAULT_ACTIVITY;
@@ -17,7 +17,7 @@ public class Activities {
   static {
     DEFAULT_ACTIVITY = new Activity("Why not read a book?", "books.png");
 
-    JsonObject json = new JsonParser().parse(new InputStreamReader(Activities.class.getResourceAsStream("/data/activities.json"))).getAsJsonObject();
+    JsonObject json = new JsonParser().parse(new InputStreamReader(Activity.class.getResourceAsStream("/data/activities.json"))).getAsJsonObject();
 
     for (String weatherIcon : json.keySet()) {
       ArrayList<Activity> activities = new ArrayList<>();
@@ -39,13 +39,11 @@ public class Activities {
     return DEFAULT_ACTIVITY;
   }
 
-  public static class Activity {
-    public final String activityString;
-    public final Image activityImage;
+  public final String activityString;
+  public final Image activityImage;
 
-    public Activity(String activityString, String activityImagePath) {
-      this.activityString = activityString;
-      this.activityImage = ImageCache.loadImage("activities/" + activityImagePath);
-    }
+  private Activity(String activityString, String activityImagePath) {
+    this.activityString = activityString;
+    this.activityImage = ImageCache.loadImage("activities/" + activityImagePath);
   }
 }

@@ -5,7 +5,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.backend.WeatherData;
-import uk.ac.cam.cl.interactiondesign.group10.frontend.Activities;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.Activity;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseController;
 
 class ActivityController extends BaseController {
@@ -19,7 +19,7 @@ class ActivityController extends BaseController {
 
     void initialize() {
         WeatherData.WeatherDataPoint current = currentLocation.getWeatherData().current;
-        Activities.Activity activity = Activities.getActivity(current.darkSkyIcon);
+        Activity activity = Activity.getActivity(current.darkSkyIcon);
         imageActivityProperty.setValue(activity.activityImage);
         textActivitySuggestion.setValue(activity.activityString);
     }
