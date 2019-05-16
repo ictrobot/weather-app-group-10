@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.animated.WRaindrop;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.animated.WThermometer;
 
 class CurrentInfoView extends GridPane {
 
@@ -66,11 +68,9 @@ class CurrentInfoView extends GridPane {
         controller.textConditions = conditions.textProperty();
 
         // temperature
-        ImageView thermometer = new ImageView(ImageCache.loadImage("other/thermometer.png"));
-        thermometer.setFitWidth(50);
-        thermometer.setPreserveRatio(true);
-
+        WThermometer thermometer = new WThermometer();
         add(thermometer, 0, 1, 1, 3);
+        controller.thermometerTargetTemp = thermometer.getTargetProperty();
 
         add(new Text("Temperature: "), 0, 4);
 
@@ -79,11 +79,9 @@ class CurrentInfoView extends GridPane {
         controller.textTemperature = temperature.textProperty();
 
         // precipitation
-
-        ImageView raindrop = new ImageView(ImageCache.loadImage("other/raindrop.png"));
-        raindrop.setFitWidth(50);
-        raindrop.setPreserveRatio(true);
+        WRaindrop raindrop = new WRaindrop();
         add(raindrop, 2, 1, 1, 3);
+        controller.raindropTargetPrecip = raindrop.getTargetProperty();
 
         add(new Text("Precipitation: "), 2, 4);
 

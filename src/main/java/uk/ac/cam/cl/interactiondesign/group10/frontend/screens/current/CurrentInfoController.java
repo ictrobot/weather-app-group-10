@@ -1,5 +1,6 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
@@ -17,6 +18,9 @@ class CurrentInfoController {
     StringProperty textPrecipitation;
     ObjectProperty<Image> imageProperty;
 
+    DoubleProperty thermometerTargetTemp;
+    DoubleProperty raindropTargetPrecip;
+
     CurrentInfoController(Location location) {
         this.location = location;
     }
@@ -28,6 +32,9 @@ class CurrentInfoController {
         textTemperature.setValue(current.getTemperatureString());
         textPrecipitation.setValue(current.getPrecipitationString());
         imageProperty.setValue(ImageCache.weatherImage(current.darkSkyIcon));
+
+        thermometerTargetTemp.setValue(current.temperature);
+        raindropTargetPrecip.setValue(current.precipitationProbability);
     }
 
 }
