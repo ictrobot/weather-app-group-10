@@ -1,9 +1,12 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current;
 
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Priority;
@@ -63,8 +66,15 @@ public class MainView extends BaseView {
         daily.setOnAction(controller::showDaily);
         add(daily, 0, 4);
 
-        Button changeLocation = new WButton("Change Location");
+//        Button changeLocation = new WButton();
+        Hyperlink changeLocation = new Hyperlink();
+        Image locationImg = ImageCache.loadImage("other/location.png");
+        ImageView locationImgView = new ImageView(locationImg);
+        locationImgView.setFitWidth(50);
+        locationImgView.setFitHeight(60);
+        changeLocation.setGraphic(locationImgView);
         changeLocation.setOnAction(controller::changeLocation);
         add(changeLocation, 0, 5);
+
     }
 }
