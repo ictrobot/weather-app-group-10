@@ -2,89 +2,89 @@
   "clear-day": [
     {
       "text": "It’s a sunny day, why not have a picnic in the shade, remember your sun cream!",
-      "image": "unknown.png"
+      "image": "picnic-basket.png"
     },
     {
       "text" : "It’s sunny and warm outside, why not go and hunt an ice cream van, but don’t get too hot!",
-    "image" : "unknown.png"
+    "image" : "ice-cream-van.png"
     },
     {
-      "text": "The suns out and the skies are clear,are there any outdoor swimming pools near you?",
-      "image": "unknown.png"
+      "text": "The suns out and the skies are clear, are there any outdoor swimming pools near you?",
+      "image": "swimming-pool.png"
     }
   ],
 
   "clear-night": [
     {
       "text": "It’s bedtime you know, go to sleep for another fun filled day.",
-      "image": "unknown.png"
+      "image": "sleeping.png"
     },
     {
       "text" : "If you are not quite asleep, try reading a bit",
-      "image" : "unknown.png"
+      "image" : "books.png"
     }
   ],
 
   "partly-cloudy-day": [
     {
       "text": "There are a few clouds out, why not play some sports? Football, tennis, basketball are all fun to play, but play safe and play fair.",
-      "image": "unknown.png"
+      "image": "football.png"
     },
     {
       "text" : "While there are a few clouds, why not take a hike in the countryside?",
-      "image" : "unknown.png"
+      "image" : "hike.png"
     },
     {
       "text" : "There is a bit of clouds, why not organising some running races? Last to the finish is the slowest!",
-      "image" : "unknown.png"
+      "image" : "jogging.png"
     }
   ],
 
   "partly-cloudy-night": [
     {
       "text": "It’s bedtime you know, go to sleep for another fun filled day.",
-      "image": "unknown.png"
+      "image": "sleeping.png"
     },
     {
       "text" : "If you are not quite asleep, try reading a bit",
-      "image" : "unknown.png"
+      "image" : "books.png"
     }
   ],
 
   "cloudy": [
     {
       "text": "It’s cloudy at the moment, you could go to the local library to stock up on good books to read in case it rains.",
-      "image": "unknown.png"
+      "image": "books.png"
     },
     {
       "text" : "Why not go to the shops to pick up your favorite things? Remember to not spend too much.",
-      "image" : "unknown.png"
+      "image" : "store.png"
     },
     {
       "text" : "Just because the sun isn’t out isn’t an excuse to not walk the dogs, make sure you clean up after them.",
-      "image" : "unknown.png"
+      "image" : "dog.png"
     }
   ],
 
   "rain": [
     {
       "text": "It’s raining outside, as you can’t enjoy the outdoors why not get some chores done, so you can enjoy it all you want when the weather gets better.",
-      "image": "unknown.png"
+      "image": "housework.png"
     },
     {
       "text" : "It’s raining, it’s pouring, the old man is snoring, (0xE2 0x99 0xAA - unicode hex). Why not sing some songs or make some music to brighten the mood?",
-      "image" : "unknown.png"
+      "image" : "gutiar.png"
     },
     {
       "text" : "As the weather is so bad outside why not stay in and play video games?",
-      "image" : "unknown.png"
+      "image" : "game.png"
     }
   ],
 
   "sleet": [
     {
       "text": "It’s hail outside, as you can’t enjoy the outdoors why not get some chores done, so you can enjoy it all you want when the weather gets better.",
-      "image": "unknown.png"
+      "image": "housework.png"
     },
     {
       "text" : "This is the worst kind of weather, nothing to do but wait it out and maybe debug your code?",
@@ -92,7 +92,7 @@
     },
     {
       "text" : "As the weather is so bad outside why not stay in and play video games?",
-      "image" : "unknown.png"
+      "image" : "game.png"
     }
   ],
 
@@ -110,14 +110,14 @@
   "fog" : [
     {
       "text" : "There is a fog in the air at the moment, please be careful to not wander and get lost today.",
-      "image" : "unknown.png"
+      "image" : "sign.png"
     }
   ],
 
   "wind" : [
     {
       "text" : "The wind is strong today, perfect for kite flying!",
-      "image" : "unknown.png"
+      "image" : "kite.png"
     }
   ]
 }
