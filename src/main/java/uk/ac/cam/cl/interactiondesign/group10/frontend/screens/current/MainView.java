@@ -11,6 +11,8 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WButton;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseView;
 
 public class MainView extends BaseView {
@@ -43,25 +45,25 @@ public class MainView extends BaseView {
     }
 
     private void populateGrid() {
-        Text title = new Text("Current weather in");
+        Text title = new WText("Current weather in", true);
         add(title, 0, 0);
 
         CurrentInfoView civ = new CurrentInfoView(currentInfoController);
         add(civ, 0, 1);
 
-        Button activity = new Button("Activity Suggestion");
+        Button activity = new WButton("Activity Suggestion");
         activity.setOnAction(controller::showActivity);
         add(activity, 0, 2);
 
-        Button hourly = new Button("Hourly Forecast");
+        Button hourly = new WButton("Hourly Forecast");
         hourly.setOnAction(controller::showHourly);
         add(hourly, 0, 3);
 
-        Button daily = new Button("Daily Forecast");
+        Button daily = new WButton("Daily Forecast");
         daily.setOnAction(controller::showDaily);
         add(daily, 0, 4);
 
-        Button changeLocation = new Button("Change Location");
+        Button changeLocation = new WButton("Change Location");
         changeLocation.setOnAction(controller::changeLocation);
         add(changeLocation, 0, 5);
     }

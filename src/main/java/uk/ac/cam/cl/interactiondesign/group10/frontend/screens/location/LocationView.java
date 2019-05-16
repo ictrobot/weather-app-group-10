@@ -10,6 +10,8 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WButton;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseView;
 
 public class LocationView extends BaseView {
@@ -39,7 +41,7 @@ public class LocationView extends BaseView {
     }
 
     private void populateGrid() {
-        Text title = new Text("Change location");
+        Text title = new WText("Change location", true);
         add(title, 0, 0);
 
         ImageView ukMap = new ImageView(ImageCache.loadImage("other/uk.png"));
@@ -47,11 +49,11 @@ public class LocationView extends BaseView {
         ukMap.fitHeightProperty().bind(heightProperty().multiply(0.5));
         add(ukMap, 0, 1);
 
-        Button useMyLocation = new Button("Use my location");
+        Button useMyLocation = new WButton("Use my location");
         useMyLocation.setOnAction(controller::doLocate);
         add(useMyLocation, 0, 2);
 
-        add(new Text("Or, enter a location:"), 0, 3);
+        add(new WText("Or, enter a location:"), 0, 3);
 
         TextField locationInput = new TextField();
         locationInput.setPromptText("Location");
@@ -59,11 +61,11 @@ public class LocationView extends BaseView {
         add(locationInput, 0, 4);
         controller.searchStringProperty = locationInput.textProperty();
 
-        Button search = new Button("Search");
+        Button search = new WButton("Search");
         search.setOnAction(controller::doSearch);
         add(search, 0, 5);
 
-        Button back = new Button("Back");
+        Button back = new WButton("Back");
         back.setOnAction(controller::gotoMainMenu);
         add(back, 0, 6);
     }

@@ -7,6 +7,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 
 class EntryView extends GridPane {
 
@@ -42,24 +43,24 @@ class EntryView extends GridPane {
     }
 
     private void populateGrid() {
-        Text time = new Text();
+        Text time = new WText();
         add(time, 0, 0);
         controller.textTime = time.textProperty();
 
-        Text conditions = new Text();
+        Text conditions = new WText();
         conditions.setWrappingWidth(200);
         add(conditions, 1, 0, 2, 1);
         setHalignment(conditions, HPos.LEFT);
         controller.textConditions = conditions.textProperty();
 
-        add(new Text("Temperature: "), 1, 1);
-        add(new Text("Precipitation: "), 1, 2);
+        add(new WText("Temperature: "), 1, 1);
+        add(new WText("Precipitation: "), 1, 2);
 
-        Text temperature = new Text();
+        Text temperature = new WText();
         add(temperature, 2, 1);
         controller.textTemperature = temperature.textProperty();
 
-        Text precipitation = new Text();
+        Text precipitation = new WText();
         add(precipitation, 2, 2);
         controller.textPrecipitation = precipitation.textProperty();
 
