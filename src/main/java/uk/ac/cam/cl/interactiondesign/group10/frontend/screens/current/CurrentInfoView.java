@@ -1,5 +1,7 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current;
 
+import com.sun.imageio.plugins.gif.GIFImageReader;
+import javafx.animation.ScaleTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.image.ImageView;
@@ -8,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 
 class CurrentInfoView extends GridPane {
@@ -62,10 +65,10 @@ class CurrentInfoView extends GridPane {
         controller.textConditions = conditions.textProperty();
 
         // temperature
-
         ImageView thermometer = new ImageView(ImageCache.loadImage("other/thermometer.png"));
         thermometer.setFitWidth(50);
         thermometer.setPreserveRatio(true);
+
         add(thermometer, 0, 1, 1, 3);
 
         add(new Text("Temperature: "), 0, 4);
