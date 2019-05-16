@@ -8,11 +8,8 @@ public class WFont {
   static final Font TITLE;
 
   static {
-    String url = WFont.class.getResource("/other/KGNeatlyPrinted.ttf").toExternalForm();
-
-    MAIN = Font.loadFont(url, 24);
-
-    TITLE = Font.loadFont(url, 32);
+    MAIN = Font.loadFont(WFont.class.getResourceAsStream("/other/KGNeatlyPrinted.ttf"), 24);
+    TITLE = Font.loadFont(WFont.class.getResourceAsStream("/other/KGNeatlyPrinted.ttf"), 32);
   }
 
 }
