@@ -12,14 +12,17 @@ import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 
 public abstract class BaseView extends GridPane {
 
+    public static final int MINIMUM_WIDTH = 9 * 40;
+    public static final int MINIMUM_HEIGHT = 16 * 40;
+
     public BaseView() {
         setPadding(new Insets(20f));
 
-        setPrefWidth(9 * 40);
-        setPrefHeight(16 * 40);
+        setPrefWidth(MINIMUM_WIDTH);
+        setPrefHeight(MINIMUM_HEIGHT);
 
-        setMinWidth(9 * 30);
-        setMinHeight(16 * 30);
+        setMinWidth(MINIMUM_WIDTH);
+        setMinHeight(MINIMUM_HEIGHT);
 
         setHgap(10);
         setVgap(10);
