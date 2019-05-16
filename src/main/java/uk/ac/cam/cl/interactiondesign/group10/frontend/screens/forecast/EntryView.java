@@ -1,6 +1,7 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.forecast;
 
 import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -45,6 +46,7 @@ class EntryView extends GridPane {
     private void populateGrid() {
         Text time = new WText();
         add(time, 0, 0);
+        setValignment(time, VPos.TOP);
         controller.textTime = time.textProperty();
 
         Text conditions = new WText();
