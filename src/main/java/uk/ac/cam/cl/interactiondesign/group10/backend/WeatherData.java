@@ -64,22 +64,6 @@ public final class WeatherData {
         return "On " + daily.format(new Date(timestamp)) + ":";
     }
 
-    static WeatherData getWeatherData(double latitude, double longitude) throws APIException {
-        String url = "https://api.darksky.net/forecast/" + APIKeys.DARKSKY_WEATHER
-                + "/" + latitude + "," + longitude
-                + "?lang=en&units=uk2";
-        System.out.println("WeatherData: requesting data for " + latitude + ", " + longitude);
-
-        try {
-            HttpResponse<JsonNode> response = Unirest.get(url).asJson();
-            return new WeatherData(response.getBody());
-        } catch (UnirestException e) {
-            throw new APIException("Weather data request failed ", e);
-        } catch (JSONException e) {
-            throw new APIException("Failed to parse weather response", e);
-        }
-    }
-
     /**
      * Represents the weather forecast at a certain point in time
      */
@@ -119,6 +103,27 @@ public final class WeatherData {
          */
         public String getPrecipitationString() {
             return String.format("%.1f%%", precipitationProbability * 100);
+        }
+    }
+
+    // STATIC
+
+    static WeatherData getWeatherData(double latitude, double longitude) throws APIException {
+        // construct url using secret API key, latitude and longitude
+        String url = "https://api.darksky.net/forecast/" + APIKeys.DARKSKY_WEATHER
+                + "/" + latitude + "," + longitude
+                + "?lang=en&units=uk2";
+        System.out.println("WeatherData: requesting data for " + latitude + ", " + longitude);
+
+        try {
+            // Use Unirest to simply make the request and get the response as JSON
+            HttpResponse<JsonNode> response = Unirest.get(url).asJson();
+            // Construct a WeatherData instance which interprets the data
+            return new WeatherData(response.getBody());
+        } catch (UnirestException e) {
+            throw new APIException("Weather data request failed ", e);
+        } catch (JSONException e) {
+            throw new APIException("Failed to parse weather response", e);
         }
     }
 }

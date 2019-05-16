@@ -47,6 +47,8 @@ public final class Location {
         return "(\"" + name + "\", " + latitude + ", " + longitude + ")";
     }
 
+    // STATIC
+
     public static Location detectLocation() throws APIException {
         // Hi-Fi prototype is hard coded to presume Cambridge
         // as it would be to difficult to use location data
