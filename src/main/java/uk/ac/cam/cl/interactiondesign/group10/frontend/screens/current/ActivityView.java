@@ -3,6 +3,7 @@ package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
@@ -34,7 +35,7 @@ public class ActivityView extends BaseView {
         getColumnConstraints().add(columnConstraints);
 
         // four rows, expand 2nd
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             RowConstraints rowConstraints = new RowConstraints();
             rowConstraints.setVgrow(i == 1 ? Priority.ALWAYS : Priority.NEVER);
             rowConstraints.setValignment(VPos.CENTER);
@@ -50,11 +51,18 @@ public class ActivityView extends BaseView {
         add(civ, 0, 1);
 
         Text activity = new WText();
+        activity.setWrappingWidth(300);
         add(activity, 0, 2);
         controller.textActivitySuggestion = activity.textProperty();
 
+        ImageView activityIcon = new ImageView();
+        activityIcon.setFitHeight(100);
+        activityIcon.setPreserveRatio(true);
+        add(activityIcon, 0, 3);
+        controller.imageActivityProperty = activityIcon.imageProperty();
+
         Button back = new WButton("Back");
         back.setOnAction(controller::gotoMainMenu);
-        add(back, 0, 3);
+        add(back, 0, 4);
     }
 }
