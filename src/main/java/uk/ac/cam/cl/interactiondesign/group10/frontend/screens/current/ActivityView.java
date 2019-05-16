@@ -8,6 +8,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WButton;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseView;
 
 public class ActivityView extends BaseView {
@@ -41,17 +43,17 @@ public class ActivityView extends BaseView {
     }
 
     private void populateGrid() {
-        Text title = new Text("Activity Suggestion in");
+        Text title = new WText("Activity Suggestion in", true);
         add(title, 0, 0);
 
         CurrentInfoView civ = new CurrentInfoView(currentInfoController);
         add(civ, 0, 1);
 
-        Text activity = new Text();
+        Text activity = new WText();
         add(activity, 0, 2);
         controller.textActivitySuggestion = activity.textProperty();
 
-        Button back = new Button("Back");
+        Button back = new WButton("Back");
         back.setOnAction(controller::gotoMainMenu);
         add(back, 0, 3);
     }

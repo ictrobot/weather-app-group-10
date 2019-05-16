@@ -21,6 +21,8 @@ sourceSets {
             includes += "secrets.properties"
             // include needed images
             includes += "images/"
+            includes += "data/"
+            includes += "other/"
         }
     }
 }

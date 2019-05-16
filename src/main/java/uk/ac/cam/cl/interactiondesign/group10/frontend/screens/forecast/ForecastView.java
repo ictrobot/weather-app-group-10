@@ -8,6 +8,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WButton;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseView;
 
 abstract class ForecastView extends BaseView {
@@ -31,10 +33,10 @@ abstract class ForecastView extends BaseView {
     }
 
     void populateGrid() {
-        Text title = new Text(getTitleString());
+        Text title = new WText(getTitleString(), true);
         add(title, 0, 0);
 
-        Text currentLocation = new Text();
+        Text currentLocation = new WText();
         add(currentLocation, 0, 1);
         controller.locationText = currentLocation.textProperty();
 
@@ -46,7 +48,7 @@ abstract class ForecastView extends BaseView {
         add(scrollPane, 0, 2);
         controller.scrollChildren = scrollInner.getChildren();
 
-        Button back = new Button("Back");
+        Button back = new WButton("Back");
         back.setOnAction(controller::gotoMainMenu);
         add(back, 0, 3);
     }
