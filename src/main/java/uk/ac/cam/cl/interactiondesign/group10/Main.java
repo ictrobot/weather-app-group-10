@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIException;
 import uk.ac.cam.cl.interactiondesign.group10.backend.APIKeys;
@@ -19,6 +18,13 @@ public class Main extends Application {
         tryLoadApiKeys();
 
         Location startingLocation = Location.detectLocation();
+
+        primaryStage.setTitle("Weather App");
+        primaryStage.setScene(new Scene(new MainView(startingLocation)));
+        primaryStage.setMinWidth(9 * 30);
+        primaryStage.setMinHeight(16 * 30);
+        primaryStage.getIcons().add(ImageCache.weatherImage("cloudy"));
+        primaryStage.show();
     }
 
     private void tryLoadApiKeys() {
