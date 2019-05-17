@@ -70,8 +70,8 @@ public class MainView extends BaseView {
         Hyperlink changeLocation = new Hyperlink();
         Image locationImg = ImageCache.loadImage("other/location.png");
         ImageView locationImgView = new ImageView(locationImg);
-        locationImgView.setFitWidth(50);
-        locationImgView.setFitHeight(60);
+        locationImgView.setFitWidth(80);
+        locationImgView.setFitHeight(80);
         changeLocation.setGraphic(locationImgView);
         changeLocation.setOnAction(controller::changeLocation);
         add(changeLocation, 0, 5);
