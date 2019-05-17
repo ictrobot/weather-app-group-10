@@ -1,45 +1,44 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.screens;
 
 import javafx.geometry.Insets;
-import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import uk.ac.cam.cl.interactiondesign.group10.backend.WeatherData;
-import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 
+/**
+ * Every screen is made up of a View and Controller class.
+ * The screen's View class extends BaseView which in turn extends GridPane
+ * It is responsible for constructing the needed components and their layout
+ */
 public abstract class BaseView extends GridPane {
 
     public static final int MINIMUM_WIDTH = 9 * 40;
     public static final int MINIMUM_HEIGHT = 16 * 40;
 
     public BaseView() {
+        // setup defaults
+
+        // padding around the edge of the screen
         setPadding(new Insets(20f));
 
+        // preferred sizing
         setPrefWidth(MINIMUM_WIDTH);
         setPrefHeight(MINIMUM_HEIGHT);
 
+        // minimum sizing
         setMinWidth(MINIMUM_WIDTH);
         setMinHeight(MINIMUM_HEIGHT);
 
+        // padding around components
         setHgap(10);
         setVgap(10);
     }
 
-    void setupBackgroundColour(WeatherData.WeatherDataPoint current) {
-        Image backgroundGradient = ImageCache.loadImage("other/colourgradient.png");
-        PixelReader pixelReader = backgroundGradient.getPixelReader();
-        int x;
-        if (current.temperature < -5) {
-            x = 0;
-        } else if (current.temperature > 30) {
-            x = (int) (backgroundGradient.getWidth() - 1);
-        } else {
-            x = (int) (((current.temperature + 5) / 35) * backgroundGradient.getWidth());
-        }
-        Color colour = pixelReader.getColor(x, 0);
+    /**
+     * Helper method to set the background colour of the screen
+     */
+    void setBackgroundColor(Color colour) {
         BackgroundFill backgroundFill = new BackgroundFill(colour, null, null);
         setBackground(new Background(backgroundFill));
     }
