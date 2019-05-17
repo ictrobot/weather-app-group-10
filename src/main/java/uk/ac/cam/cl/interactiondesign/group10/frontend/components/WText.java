@@ -1,8 +1,12 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.components;
 
-import javafx.scene.Node;
 import javafx.scene.text.Text;
 
+/**
+ * WText = Weather App Text
+ * Customizes default text class for our weather app, avoids having to set the same properties repeatedly
+ * Ensures text uses the correct font
+ */
 public class WText extends Text {
 
   public WText() {

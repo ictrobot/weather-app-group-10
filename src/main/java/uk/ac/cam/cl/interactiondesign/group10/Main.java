@@ -12,23 +12,35 @@ import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseView;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current.MainView;
 
+/**
+ * Main entry point: run this class to start the project
+ */
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         tryLoadApiKeys();
 
+        // Detect the location to use when first opening the app
+        // Agreed that in the Hi-Fi prototype we could hard code to presume Cambridge
         Location startingLocation = Location.detectLocation();
 
+        // setup the basic window
         primaryStage.setTitle("Weather App");
-        primaryStage.setScene(new Scene(new MainView(startingLocation)));
         primaryStage.setMinWidth(BaseView.MINIMUM_WIDTH);
         primaryStage.setMinHeight(BaseView.MINIMUM_HEIGHT);
         primaryStage.getIcons().add(ImageCache.weatherImage("cloudy"));
+
+        // set to the main menu
+        primaryStage.setScene(new Scene(new MainView(startingLocation)));
+
+        // show the window now that it is setup
         primaryStage.show();
     }
 
     private void tryLoadApiKeys() {
+        // try loading the API keys from the secrets file
+        // if this fails display a dialog box explaining and then exit
         try {
             APIKeys.loadAPIKeys();
         } catch (APIException e) {
@@ -46,6 +58,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        // start JavaFX
         launch(args);
     }
 
