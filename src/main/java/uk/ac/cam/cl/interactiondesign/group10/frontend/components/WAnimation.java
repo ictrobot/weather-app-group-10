@@ -8,15 +8,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+/**
+ * WAnimation = Weather App Animation
+ * Abstract class defining how an animation will occur
+ * Frame limit function to be defined by the instance of WAnimate
+ */
 abstract class WAnimation {
-
     private Image[] frames;
     private ImageView currentFrame = new ImageView();
     private int frameIndex;
     private int frameLimit;
     private boolean animationComplete;
 
-    protected WAnimation(String[] imagePaths, double value, int fitWidth){
+    public WAnimation(String[] imagePaths, double value, int fitWidth){
         int imageCount = imagePaths.length;
         frames = new Image[imageCount];
         for(int i = 0; i < imageCount; i++){

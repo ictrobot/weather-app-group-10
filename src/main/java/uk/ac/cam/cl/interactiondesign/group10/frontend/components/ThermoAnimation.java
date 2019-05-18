@@ -2,8 +2,14 @@ package uk.ac.cam.cl.interactiondesign.group10.frontend.components;
 
 import java.io.File;
 
-public class ThermometerAnimation extends WAnimation {
-    private static String[] images = {
+/**
+ * ThermoAnimation = Thermometer Animation
+ * Instance of WAnimation
+ * Provides all images to be in animation as well as frame limit calculation
+ */
+public class ThermoAnimation extends WAnimation {
+
+    private static String[] thermoPaths = {
             "images/Animations/thermometer/1.png",
             "images/Animations/thermometer/2.png",
             "images/Animations/thermometer/3.png",
@@ -29,12 +35,14 @@ public class ThermometerAnimation extends WAnimation {
             "images/Animations/thermometer/23.png",
     };
 
-    public ThermometerAnimation(double value, int fitWidth) {
-        super(images, value, fitWidth);
+    public ThermoAnimation(double value, int fitWidth) {
+        super(thermoPaths, value, fitWidth);
     }
+
 
     @Override
     int getFrameLimit(double value) {
+        // 6 notches high at 0 celcius
         return (int) (2*(value+30)/10);
     }
 }

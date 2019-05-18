@@ -1,5 +1,12 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.components;
 
+import java.io.File;
+
+/**
+ * PrecAnimation = Precipitation Animation
+ * Instance of WAnimation
+ * Provides all images to be in animation as well as frame limit calculation
+ */
 public class PrecAnimation extends WAnimation {
 
     private static String[] raindropPaths = {
@@ -13,7 +20,7 @@ public class PrecAnimation extends WAnimation {
             "images/Animations/raindrop/70.png",
             "images/Animations/raindrop/80.png",
             "images/Animations/raindrop/90.png",
-            "images/Animations/raindrop/100.png"
+            "images/Animations/raindrop/100.png",
     };
 
     public PrecAnimation(double value, int fitWidth) {
