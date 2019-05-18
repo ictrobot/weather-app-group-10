@@ -94,13 +94,13 @@ class CurrentInfoView extends GridPane {
         column2.setHalignment(HPos.RIGHT);
         textGrid.getColumnConstraints().add(column2);
 
-        textGrid.add(new WText("Temperature: "), 0, 0);
+        textGrid.add(new WText("Temperature:"), 0, 0);
 
         Text temperature = new WText();
         textGrid.add(temperature, 0, 1);
         controller.textTemperature = temperature.textProperty();
 
-        textGrid.add(new WText("Precipitation: "), 1, 0);
+        textGrid.add(new WText("Precipitation:"), 1, 0);
 
         Text precipitation = new WText();
         textGrid.add(precipitation, 1, 1);
