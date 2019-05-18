@@ -43,6 +43,7 @@ public class ThermoAnimation extends WAnimation {
     @Override
     int getFrameLimit(double value) {
         // 6 notches high at 0 celcius
-        return (int) (2*(value+30)/10);
+        int calculation = (int) (2*(value+30)/10);
+        return Math.min(calculation, thermoPaths.length-1);
     }
 }

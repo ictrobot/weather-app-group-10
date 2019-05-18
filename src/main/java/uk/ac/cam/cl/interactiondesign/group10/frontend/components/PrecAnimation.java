@@ -29,6 +29,7 @@ public class PrecAnimation extends WAnimation {
 
     @Override
     int getFrameLimit(double value) {
-        return (int) Math.round(value/10.0);
+        int calculation = (int) Math.round(value/10.0);
+        return Math.min(calculation, raindropPaths.length-1);
     }
 }
