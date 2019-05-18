@@ -64,9 +64,10 @@ class CurrentInfoView extends GridPane {
         controller.textConditions = conditions.textProperty();
 
         // temperature
-        ThermoAnimation thermometer = new ThermoAnimation(controller.tempretureValue,50);
-        add(thermometer.currentFrame(), 0, 1, 1, 3);
-        thermometer.animate();
+        ThermoAnimation thermometer = new ThermoAnimation();
+        thermometer.setFitWidth(50);
+        add(thermometer, 0, 1, 1, 3);
+        controller.thermoAnimationSetup = thermometer::setupAnimation;
 
         add(new Text("Temperature: "), 0, 4);
 
@@ -75,9 +76,10 @@ class CurrentInfoView extends GridPane {
         controller.textTemperature = temperature.textProperty();
 
         // precipitation
-        PrecAnimation raindrop = new PrecAnimation(controller.precipitationValue,50);
-        add(raindrop.currentFrame(), 2, 1, 1, 3);
-        raindrop.animate();
+        PrecAnimation raindrop = new PrecAnimation();
+        raindrop.setFitWidth(50);
+        add(raindrop, 2, 1, 1, 3);
+        controller.precAnimationSetup = raindrop::setupAnimation;
 
         add(new Text("Precipitation: "), 2, 4);
 

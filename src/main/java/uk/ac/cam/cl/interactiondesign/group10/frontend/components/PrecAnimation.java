@@ -1,6 +1,8 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.components;
 
-import java.io.File;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * PrecAnimation = Precipitation Animation
@@ -9,27 +11,17 @@ import java.io.File;
  */
 public class PrecAnimation extends WAnimation {
 
-    private static String[] raindropPaths = {
-            "images/Animations/raindrop/0.png",
-            "images/Animations/raindrop/10.png",
-            "images/Animations/raindrop/20.png",
-            "images/Animations/raindrop/30.png",
-            "images/Animations/raindrop/40.png",
-            "images/Animations/raindrop/50.png",
-            "images/Animations/raindrop/60.png",
-            "images/Animations/raindrop/70.png",
-            "images/Animations/raindrop/80.png",
-            "images/Animations/raindrop/90.png",
-            "images/Animations/raindrop/100.png",
-    };
+    private static List<String> raindropPaths =
+            IntStream.range(0, 10).mapToObj(i -> "animations/raindrop/" + (i * 10) + ".png").collect(Collectors.toList());
 
-    public PrecAnimation(double value, int fitWidth) {
-        super(raindropPaths, value, fitWidth);
+    public PrecAnimation() {
+        super(raindropPaths);
     }
 
     @Override
     int getFrameLimit(double value) {
-        int calculation = (int) Math.round(value/10.0);
-        return Math.min(calculation, raindropPaths.length-1);
+        if (value < 0) value = 0;
+        if (value > 1) value = 1;
+        return (int) (value * (raindropPaths.size() - 1));
     }
 }

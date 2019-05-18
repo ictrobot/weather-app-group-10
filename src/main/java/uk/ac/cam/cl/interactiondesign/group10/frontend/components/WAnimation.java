@@ -1,60 +1,51 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.components;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
-import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * WAnimation = Weather App Animation
  * Abstract class defining how an animation will occur
  * Frame limit function to be defined by the instance of WAnimate
  */
-abstract class WAnimation {
-    private Image[] frames;
-    private ImageView currentFrame = new ImageView();
+abstract class WAnimation extends ImageView {
+    private List<Image> frames;
     private int frameIndex;
-    private int frameLimit;
     private boolean animationComplete;
 
-    public WAnimation(String[] imagePaths, double value, int fitWidth){
-        int imageCount = imagePaths.length;
-        frames = new Image[imageCount];
-        for(int i = 0; i < imageCount; i++){
-            frames[i] = new Image(imagePaths[i]);
-        }
+    WAnimation(List<String> imagePaths){
+        frames = imagePaths.stream().map(ImageCache::loadImage).collect(Collectors.toList());
         frameIndex = 0;
-        frameLimit = getFrameLimit(value);
         animationComplete = false;
 
-        currentFrame.setImage(frames[frameIndex]);
-        currentFrame.setFitWidth(fitWidth);
-        currentFrame.setPreserveRatio(true);
+        setImage(frames.get(frameIndex));
+        setPreserveRatio(true);
     }
 
-    public void animate(){
-        if(!animationComplete){
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> { this.nextFrame();}));
-            timeline.setCycleCount(frameLimit);
-            timeline.play();
-            animationComplete=true;
-        }else {
-            currentFrame.setImage(frames[frameLimit]);
+    public void setupAnimation(double value){
+        if(!animationComplete) {
+            int frameLimit = getFrameLimit(value);
+            if (frameLimit > 0) {
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> this.nextFrame()));
+                timeline.setCycleCount(frameLimit);
+                timeline.play();
+
+                animationComplete = true;
+            }
         }
     }
 
     abstract int getFrameLimit(double value);
 
-    private ImageView nextFrame() {
+    private void nextFrame() {
         frameIndex++;
-        currentFrame.setImage(frames[frameIndex]);
-        return currentFrame;
-    }
-
-    public ImageView currentFrame(){
-        return currentFrame;
+        setImage(frames.get(frameIndex));
     }
 }

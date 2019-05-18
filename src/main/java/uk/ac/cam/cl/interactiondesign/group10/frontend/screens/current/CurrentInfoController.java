@@ -7,6 +7,8 @@ import uk.ac.cam.cl.interactiondesign.group10.backend.Location;
 import uk.ac.cam.cl.interactiondesign.group10.backend.WeatherData;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
 
+import java.util.function.DoubleConsumer;
+
 class CurrentInfoController {
 
     private final Location location;
@@ -16,8 +18,9 @@ class CurrentInfoController {
     StringProperty textTemperature;
     StringProperty textPrecipitation;
     ObjectProperty<Image> imageProperty;
-    double tempretureValue;
-    double precipitationValue;
+
+    DoubleConsumer thermoAnimationSetup;
+    DoubleConsumer precAnimationSetup;
 
     CurrentInfoController(Location location) {
         this.location = location;
@@ -31,8 +34,8 @@ class CurrentInfoController {
         textPrecipitation.setValue(current.getPrecipitationString());
         imageProperty.setValue(ImageCache.weatherImage(current.darkSkyIcon));
 
-        tempretureValue = current.temperature;
-        precipitationValue = current.precipitationProbability;
+        thermoAnimationSetup.accept(current.temperature);
+        precAnimationSetup.accept(current.precipitationProbability);
     }
 
 }

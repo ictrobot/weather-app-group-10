@@ -1,6 +1,8 @@
 package uk.ac.cam.cl.interactiondesign.group10.frontend.components;
 
-import java.io.File;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * ThermoAnimation = Thermometer Animation
@@ -9,41 +11,21 @@ import java.io.File;
  */
 public class ThermoAnimation extends WAnimation {
 
-    private static String[] thermoPaths = {
-            "images/Animations/thermometer/1.png",
-            "images/Animations/thermometer/2.png",
-            "images/Animations/thermometer/3.png",
-            "images/Animations/thermometer/4.png",
-            "images/Animations/thermometer/5.png",
-            "images/Animations/thermometer/6.png",
-            "images/Animations/thermometer/7.png",
-            "images/Animations/thermometer/8.png",
-            "images/Animations/thermometer/9.png",
-            "images/Animations/thermometer/10.png",
-            "images/Animations/thermometer/11.png",
-            "images/Animations/thermometer/12.png",
-            "images/Animations/thermometer/13.png",
-            "images/Animations/thermometer/14.png",
-            "images/Animations/thermometer/15.png",
-            "images/Animations/thermometer/16.png",
-            "images/Animations/thermometer/17.png",
-            "images/Animations/thermometer/18.png",
-            "images/Animations/thermometer/19.png",
-            "images/Animations/thermometer/20.png",
-            "images/Animations/thermometer/21.png",
-            "images/Animations/thermometer/22.png",
-            "images/Animations/thermometer/23.png",
-    };
+    private static List<String> thermoPaths =
+            IntStream.range(1, 24).mapToObj(i -> "animations/thermometer/" + i + ".png").collect(Collectors.toList());
 
-    public ThermoAnimation(double value, int fitWidth) {
-        super(thermoPaths, value, fitWidth);
+    public ThermoAnimation() {
+        super(thermoPaths);
     }
 
 
     @Override
     int getFrameLimit(double value) {
-        // 6 notches high at 0 celcius
-        int calculation = (int) (2*(value+30)/10);
-        return Math.min(calculation, thermoPaths.length-1);
+        double minValue = -5;
+        double maxValue = 30;
+        double proportion = (value - minValue) / (maxValue - minValue);
+        if (proportion < 0) proportion = 0;
+        if (proportion > 1) proportion = 1;
+        return (int) (proportion * (thermoPaths.size() - 1));
     }
 }
