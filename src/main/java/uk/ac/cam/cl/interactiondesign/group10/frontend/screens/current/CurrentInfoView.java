@@ -2,6 +2,7 @@ package uk.ac.cam.cl.interactiondesign.group10.frontend.screens.current;
 
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -9,6 +10,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.PrecAnimation;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.ThermometerAnimation;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 
 class CurrentInfoView extends GridPane {
@@ -63,11 +66,9 @@ class CurrentInfoView extends GridPane {
         controller.textConditions = conditions.textProperty();
 
         // temperature
-        ImageView thermometer = new ImageView(ImageCache.loadImage("other/thermometer.png"));
-        thermometer.setFitWidth(50);
-        thermometer.setPreserveRatio(true);
-
-        add(thermometer, 0, 1, 1, 3);
+        ThermometerAnimation thermometer = new ThermometerAnimation(controller.tempretureValue,50);
+        add(thermometer.currentFrame(), 0, 1, 1, 3);
+        thermometer.animate();
 
         add(new Text("Temperature: "), 0, 4);
 
@@ -77,10 +78,10 @@ class CurrentInfoView extends GridPane {
 
         // precipitation
 
-        ImageView raindrop = new ImageView(ImageCache.loadImage("other/raindrop.png"));
-        raindrop.setFitWidth(50);
-        raindrop.setPreserveRatio(true);
-        add(raindrop, 2, 1, 1, 3);
+        PrecAnimation raindrop = new PrecAnimation(controller.precipitationValue,50);
+        add(raindrop.currentFrame(), 2, 1, 1, 3);
+        raindrop.animate();
+
 
         add(new Text("Precipitation: "), 2, 4);
 

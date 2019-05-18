@@ -16,6 +16,8 @@ class CurrentInfoController {
     StringProperty textTemperature;
     StringProperty textPrecipitation;
     ObjectProperty<Image> imageProperty;
+    double tempretureValue;
+    double precipitationValue;
 
     CurrentInfoController(Location location) {
         this.location = location;
@@ -28,6 +30,9 @@ class CurrentInfoController {
         textTemperature.setValue(current.getTemperatureString());
         textPrecipitation.setValue(current.getPrecipitationString());
         imageProperty.setValue(ImageCache.weatherImage(current.darkSkyIcon));
+
+        tempretureValue = current.temperature;
+        precipitationValue = current.precipitationProbability;
     }
 
 }
