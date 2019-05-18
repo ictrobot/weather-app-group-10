@@ -50,6 +50,7 @@ public class ActivityView extends BaseView {
         CurrentInfoView civ = new CurrentInfoView(currentInfoController);
         add(civ, 0, 1);
 
+
         Text activity = new WText();
         activity.setWrappingWidth(300);
         add(activity, 0, 2);
