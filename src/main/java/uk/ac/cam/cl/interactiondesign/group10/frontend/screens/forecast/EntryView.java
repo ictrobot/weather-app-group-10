@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 
 class EntryView extends GridPane {
@@ -37,8 +38,10 @@ class EntryView extends GridPane {
         getColumnConstraints().add(column3);
 
         // three rows
-        for (int i = 0; i < 3; i++) {
+        // 2nd row expands to add padding between condition text and values
+        for (int i = 0; i < 4; i++) {
             RowConstraints rowConstraints = new RowConstraints();
+            rowConstraints.setVgrow(i == 2 ? Priority.ALWAYS : Priority.NEVER);
             getRowConstraints().add(rowConstraints);
         }
     }
@@ -51,25 +54,26 @@ class EntryView extends GridPane {
 
         Text conditions = new WText();
         conditions.setWrappingWidth(200);
+        conditions.setTextAlignment(TextAlignment.CENTER);
         add(conditions, 1, 0, 2, 1);
-        setHalignment(conditions, HPos.LEFT);
+        setHalignment(conditions, HPos.CENTER);
         controller.textConditions = conditions.textProperty();
 
-        add(new WText("Temperature: "), 1, 1);
-        add(new WText("Precipitation: "), 1, 2);
+        add(new WText("Temperature: "), 1, 2);
+        add(new WText("Precipitation: "), 1, 3);
 
         Text temperature = new WText();
-        add(temperature, 2, 1);
+        add(temperature, 2, 2);
         controller.textTemperature = temperature.textProperty();
 
         Text precipitation = new WText();
-        add(precipitation, 2, 2);
+        add(precipitation, 2, 3);
         controller.textPrecipitation = precipitation.textProperty();
 
         ImageView imageView = new ImageView();
         imageView.setFitHeight(80);
         imageView.setPreserveRatio(true);
-        add(imageView, 0, 1, 1, 2);
+        add(imageView, 0, 1, 1, 3);
         controller.imageProperty = imageView.imageProperty();
     }
 }
