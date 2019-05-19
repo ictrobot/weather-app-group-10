@@ -49,34 +49,38 @@ class CurrentInfoView extends GridPane {
     }
 
     private void populateGrid() {
+        // top location text
         Text location = new WText();
         add(location, 0, 0, 3, 1);
         controller.textLocation = location.textProperty();
 
+        // central weather icon
         ImageView weatherIcon = new ImageView();
         weatherIcon.setFitHeight(160);
         weatherIcon.setPreserveRatio(true);
         add(weatherIcon, 1, 1);
         controller.imageProperty = weatherIcon.imageProperty();
 
+        // current weather conditions text under icon
         Text conditions = new WText();
         add(conditions, 1, 2);
         controller.textConditions = conditions.textProperty();
 
-        // temperature
+        // animated thermometer on the left
         ThermoAnimation thermometer = new ThermoAnimation();
         thermometer.setFitWidth(50);
         add(thermometer, 0, 1, 1, 3);
         setValignment(thermometer, VPos.BOTTOM);
         controller.thermoAnimationSetup = thermometer::setupAnimation;
 
-        // precipitation
+        // animated raindrop on the right
         PrecAnimation raindrop = new PrecAnimation();
         raindrop.setFitWidth(50);
         add(raindrop, 2, 1, 1, 3);
         setValignment(raindrop, VPos.BOTTOM);
         controller.precAnimationSetup = raindrop::setupAnimation;
 
+        // bottom frame for values
         GridPane textGrid = makeTextGrid();
         add(textGrid, 0, 4, 3, 1);
     }
@@ -94,14 +98,18 @@ class CurrentInfoView extends GridPane {
         column2.setHalignment(HPos.RIGHT);
         textGrid.getColumnConstraints().add(column2);
 
+        // temperature label
         textGrid.add(new WText("Temperature:"), 0, 0);
 
+        // temperature value
         Text temperature = new WText();
         textGrid.add(temperature, 0, 1);
         controller.textTemperature = temperature.textProperty();
 
+        // precipitation label
         textGrid.add(new WText("Precipitation:"), 1, 0);
 
+        // precipitation value
         Text precipitation = new WText();
         textGrid.add(precipitation, 1, 1);
         controller.textPrecipitation = precipitation.textProperty();

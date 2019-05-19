@@ -18,6 +18,7 @@ class ActivityController extends BaseController {
     }
 
     void initialize() {
+        // get an activity for the current weather and set the text and image onscreen to match
         WeatherData.WeatherDataPoint current = currentLocation.getWeatherData().current;
         Activity activity = Activity.getActivity(current.darkSkyIcon);
         imageActivityProperty.setValue(activity.activityImage);

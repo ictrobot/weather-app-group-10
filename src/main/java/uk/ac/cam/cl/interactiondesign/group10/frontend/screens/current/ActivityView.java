@@ -13,6 +13,9 @@ import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WButton;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.screens.BaseView;
 
+/**
+ * Activity Suggestion screen
+ */
 public class ActivityView extends BaseView {
 
     private ActivityController controller;
@@ -44,23 +47,28 @@ public class ActivityView extends BaseView {
     }
 
     private void populateGrid() {
+        // top title text
         Text title = new WText("Activity Suggestion in", true);
         add(title, 0, 0);
 
+        // current weather details
         CurrentInfoView civ = new CurrentInfoView(currentInfoController);
         add(civ, 0, 1);
 
+        // dynamic text for the suggested activity
         Text activity = new WText();
         activity.setWrappingWidth(300);
         add(activity, 0, 2);
         controller.textActivitySuggestion = activity.textProperty();
 
+        // icon corresponding to the activity
         ImageView activityIcon = new ImageView();
         activityIcon.setFitHeight(100);
         activityIcon.setPreserveRatio(true);
         add(activityIcon, 0, 3);
         controller.imageActivityProperty = activityIcon.imageProperty();
 
+        // back button at bottom of the screen
         Button back = new WButton("Back");
         back.setOnAction(controller::gotoMainMenu);
         add(back, 0, 4);

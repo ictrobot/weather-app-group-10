@@ -13,6 +13,7 @@ class MainController extends BaseController {
         super(view, previousLocation);
     }
 
+    // event handlers for the various buttons
 
     void showActivity(ActionEvent actionEvent) {
         changeScreen(new ActivityView(currentLocation));

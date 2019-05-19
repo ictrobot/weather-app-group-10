@@ -13,6 +13,7 @@ class HourlyController extends ForecastController {
     protected void initialize() {
         super.initialize();
 
+        // add EntryView instances for each of the hourly data points
         for (WeatherData.WeatherDataPoint data : currentLocation.getWeatherData().hourly) {
             scrollChildren.add(new EntryView(new EntryController(data)));
         }

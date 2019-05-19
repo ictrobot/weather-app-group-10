@@ -11,6 +11,9 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 
+/**
+ * Individual entry corresponding to a weather data point (each hour or day) inside the scroll pane on the forecast screen
+ */
 class EntryView extends GridPane {
 
     private EntryController controller;
@@ -47,11 +50,13 @@ class EntryView extends GridPane {
     }
 
     private void populateGrid() {
+        // top left day / hour text
         Text time = new WText();
         add(time, 0, 0);
         setValignment(time, VPos.TOP);
         controller.textTime = time.textProperty();
 
+        // top right weather conditions text
         Text conditions = new WText();
         conditions.setWrappingWidth(200);
         conditions.setTextAlignment(TextAlignment.CENTER);
@@ -59,17 +64,21 @@ class EntryView extends GridPane {
         setHalignment(conditions, HPos.CENTER);
         controller.textConditions = conditions.textProperty();
 
+        // central value labels
         add(new WText("Temperature: "), 1, 2);
         add(new WText("Precipitation: "), 1, 3);
 
+        // actual temperature value
         Text temperature = new WText();
         add(temperature, 2, 2);
         controller.textTemperature = temperature.textProperty();
 
+        // actual precipitation value
         Text precipitation = new WText();
         add(precipitation, 2, 3);
         controller.textPrecipitation = precipitation.textProperty();
 
+        // weather icon for the data point
         ImageView imageView = new ImageView();
         imageView.setFitHeight(80);
         imageView.setPreserveRatio(true);

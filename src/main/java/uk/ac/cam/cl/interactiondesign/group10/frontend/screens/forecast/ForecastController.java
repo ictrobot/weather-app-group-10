@@ -16,6 +16,7 @@ abstract class ForecastController extends BaseController {
     }
 
     protected void initialize() {
+        // setup dynamic text (location name)
         locationText.setValue(currentLocation.getName());
     }
 
