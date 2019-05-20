@@ -5,8 +5,16 @@
       "image": "picnic-basket.png"
     },
     {
+      "text": "Time to go to the park and have a nice picnic, maybe go for a bear hunt!",
+      "image": "picnic-basket.png"
+    },
+    {
       "text" : "It’s sunny and warm outside, why not go and hunt an ice cream van, but don’t get too hot!",
     "image" : "ice-cream-van.png"
+    },
+    {
+      "text" : "With the sun beaming down so hot: I scream, you scream we all scream for ice cream.",
+      "image" : "ice-cream-van.png"
     },
     {
       "text": "The suns out and the skies are clear, are there any outdoor swimming pools near you?",
@@ -20,7 +28,15 @@
       "image": "sleeping.png"
     },
     {
-      "text" : "If you are not quite asleep, try reading a bit",
+      "text": "Lights out for another day, get some sleep so you have the well rested status applied tomorrow",
+      "image": "sleeping.png"
+    },
+    {
+      "text" : "If you are not quite asleep, try reading a bit.",
+      "image" : "books.png"
+    },
+    {
+      "text" : "There are many books on your shelf to read and then fall asleep reading.",
       "image" : "books.png"
     }
   ],
@@ -46,7 +62,15 @@
       "image": "sleeping.png"
     },
     {
-      "text" : "If you are not quite asleep, try reading a bit",
+      "text": "Lights out for another day, get some sleep so you have the well rested status applied tomorrow",
+      "image": "sleeping.png"
+    },
+    {
+      "text" : "If you are not quite asleep, try reading a bit.",
+      "image" : "books.png"
+    },
+    {
+      "text" : "There are many books on your shelf to read and then fall asleep reading.",
       "image" : "books.png"
     }
   ],
@@ -63,7 +87,9 @@
     {
       "text" : "Just because the sun isn’t out isn’t an excuse to not walk the dogs, make sure you clean up after them.",
       "image" : "dog.png"
-    }
+    },
+    { "text" : "With a bit of cloud cover, why not go for a bit of a jog?",
+      "image" : "jogging.jpg"}
   ],
 
   "rain": [
@@ -78,6 +104,10 @@
     {
       "text" : "As the weather is so bad outside why not stay in and play video games?",
       "image" : "game.png"
+    },
+    {
+      "text" : "With the rain hammering down why not make some delicious baked goods?",
+      "image" : "picnic-basket.jpg"
     }
   ],
 
@@ -93,17 +123,21 @@
     {
       "text" : "As the weather is so bad outside why not stay in and play video games?",
       "image" : "game.png"
+    },
+    {
+      "text": "With the sleet hammering down why not make some delicious baked goods?",
+      "image": "picnic-basket.jpg"
     }
   ],
 
   "snow": [
     {
       "text": "It’s snowing outside, the ground is white! Why not have a nice snowball fight with your friends? Wear a thick coat and gloves to say warm.",
-      "image": "unknown.png"
+      "image": "snowball-fight.png"
     },
     {
       "text" : "There is a snow on the floor, go find a hill and get sledging all day long! Wear a thick coat and gloves to say warm.",
-      "image" : "unknown.png"
+      "image" : "sledge.png"
     }
   ],
 
