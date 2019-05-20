@@ -15,12 +15,15 @@ class DailyController extends ForecastController {
     protected void initialize() {
         super.initialize();
 
+        // add EntryView instances for each of the daily data points
         for (WeatherData.WeatherDataPoint data : currentLocation.getWeatherData().daily) {
             scrollChildren.add(new EntryView(new EntryController(data) {
                 @Override
                 protected Image getWeatherImage() {
                     // always show daytime icons on the daily forecast screen
-                    return ImageCache.weatherImage(data.darkSkyIcon.replace("-night", "-day"));
+                    String iconName = data.darkSkyIcon;
+                    iconName = iconName.replace("-night", "-day");
+                    return ImageCache.weatherImage(iconName);
                 }
             }));
         }

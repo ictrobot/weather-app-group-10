@@ -20,7 +20,8 @@ class EntryController {
         this.data = data;
     }
 
-    void initialize() {
+    final void initialize() {
+        // setup dynamic values
         textTime.setValue(data.timestampText);
         textConditions.setValue(data.darkSkySummary);
         textTemperature.setValue(data.getTemperatureString());
@@ -28,6 +29,7 @@ class EntryController {
         imageProperty.setValue(getWeatherImage());
     }
 
+    /** Method used so daily forecast can override to ensure always day time */
     protected Image getWeatherImage() {
         return ImageCache.weatherImage(data.darkSkyIcon);
     }

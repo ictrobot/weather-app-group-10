@@ -11,22 +11,6 @@ repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDirs += "src/main/java"
-            // include fxml files required for GUIs
-            includes += "**/*.fxml"
-            // include secrets.properties which includes the API Keys
-            includes += "secrets.properties"
-            // include needed images
-            includes += "images/"
-            includes += "data/"
-            includes += "other/"
-        }
-    }
-}
-
 dependencies {
     compile 'com.google.maps:google-maps-services:0.9.3'
     compile 'com.mashape.unirest:unirest-java:1.4.9'

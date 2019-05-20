@@ -8,7 +8,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
-import uk.ac.cam.cl.interactiondesign.group10.frontend.ImageCache;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.PrecAnimation;
+import uk.ac.cam.cl.interactiondesign.group10.frontend.components.ThermoAnimation;
 import uk.ac.cam.cl.interactiondesign.group10.frontend.components.WText;
 
 class CurrentInfoView extends GridPane {
@@ -39,8 +40,8 @@ class CurrentInfoView extends GridPane {
         column3.setHalignment(HPos.CENTER);
         getColumnConstraints().add(column3);
 
-        // six rows
-        for (int i = 0; i < 6; i++) {
+        // five rows
+        for (int i = 0; i < 5; i++) {
             RowConstraints rowConstraints = new RowConstraints();
             rowConstraints.setValignment(VPos.CENTER);
             getRowConstraints().add(rowConstraints);
@@ -48,44 +49,71 @@ class CurrentInfoView extends GridPane {
     }
 
     private void populateGrid() {
+        // top location text
         Text location = new WText();
         add(location, 0, 0, 3, 1);
         controller.textLocation = location.textProperty();
 
+        // central weather icon
         ImageView weatherIcon = new ImageView();
-        weatherIcon.setFitHeight(200);
+        weatherIcon.setFitHeight(160);
         weatherIcon.setPreserveRatio(true);
         add(weatherIcon, 1, 1);
         controller.imageProperty = weatherIcon.imageProperty();
 
+        // current weather conditions text under icon
         Text conditions = new WText();
         add(conditions, 1, 2);
         controller.textConditions = conditions.textProperty();
 
-        // temperature
-        ImageView thermometer = new ImageView(ImageCache.loadImage("other/thermometer.png"));
+        // animated thermometer on the left
+        ThermoAnimation thermometer = new ThermoAnimation();
         thermometer.setFitWidth(50);
-        thermometer.setPreserveRatio(true);
-
         add(thermometer, 0, 1, 1, 3);
+        setValignment(thermometer, VPos.BOTTOM);
+        controller.thermoAnimationSetup = thermometer::setupAnimation;
 
-        add(new Text("Temperature: "), 0, 4);
+        // animated raindrop on the right
+        PrecAnimation raindrop = new PrecAnimation();
+        raindrop.setFitWidth(50);
+        add(raindrop, 2, 1, 1, 3);
+        setValignment(raindrop, VPos.BOTTOM);
+        controller.precAnimationSetup = raindrop::setupAnimation;
 
+        // bottom frame for values
+        GridPane textGrid = makeTextGrid();
+        add(textGrid, 0, 4, 3, 1);
+    }
+
+    private GridPane makeTextGrid() {
+        // make inner grid for bottom text with just 2 columns
+        GridPane textGrid = new GridPane();
+        ColumnConstraints column1 = new ColumnConstraints();
+        column1.setHgrow(Priority.ALWAYS);
+        column1.setHalignment(HPos.LEFT);
+        textGrid.getColumnConstraints().add(column1);
+
+        ColumnConstraints column2 = new ColumnConstraints();
+        column2.setHgrow(Priority.ALWAYS);
+        column2.setHalignment(HPos.RIGHT);
+        textGrid.getColumnConstraints().add(column2);
+
+        // temperature label
+        textGrid.add(new WText("Temperature:"), 0, 0);
+
+        // temperature value
         Text temperature = new WText();
-        add(temperature, 0, 5);
+        textGrid.add(temperature, 0, 1);
         controller.textTemperature = temperature.textProperty();
 
-        // precipitation
+        // precipitation label
+        textGrid.add(new WText("Precipitation:"), 1, 0);
 
-        ImageView raindrop = new ImageView(ImageCache.loadImage("other/raindrop.png"));
-        raindrop.setFitWidth(50);
-        raindrop.setPreserveRatio(true);
-        add(raindrop, 2, 1, 1, 3);
-
-        add(new Text("Precipitation: "), 2, 4);
-
+        // precipitation value
         Text precipitation = new WText();
-        add(precipitation, 2, 5);
+        textGrid.add(precipitation, 1, 1);
         controller.textPrecipitation = precipitation.textProperty();
+
+        return textGrid;
     }
 }
