@@ -29,6 +29,7 @@ abstract class WAnimation extends ImageView {
         setPreserveRatio(true);
     }
 
+    //Loops the animation, stops if complete
     public void setupAnimation(double value){
         if(!animationComplete) {
             int frameLimit = getFrameLimit(value);

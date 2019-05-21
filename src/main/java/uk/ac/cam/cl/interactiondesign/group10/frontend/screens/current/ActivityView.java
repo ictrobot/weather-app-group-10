@@ -43,6 +43,7 @@ public class ActivityView extends BaseView {
         }
     }
 
+    //Fills the grid with the activity suggestion, image and back button
     private void populateGrid() {
         Text title = new WText("Activity Suggestion in", true);
         add(title, 0, 0);
