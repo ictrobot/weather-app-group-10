@@ -51,7 +51,7 @@
       "image" : "hike.png"
     },
     {
-      "text" : "There is a bit of clouds, why not organising some running races? Last to the finish is the slowest!",
+      "text" : "There are some clouds, why not organise some running races? Last to the finish is the slowest!",
       "image" : "jogging.png"
     }
   ],
@@ -99,7 +99,7 @@
     },
     {
       "text" : "It’s raining, it’s pouring, the old man is snoring, (0xE2 0x99 0xAA - unicode hex). Why not sing some songs or make some music to brighten the mood?",
-      "image" : "gutiar.png"
+      "image" : "guitar.png"
     },
     {
       "text" : "As the weather is so bad outside why not stay in and play video games?",
@@ -136,7 +136,7 @@
       "image": "snowball-fight.png"
     },
     {
-      "text" : "There is a snow on the floor, go find a hill and get sledging all day long! Wear a thick coat and gloves to say warm.",
+      "text" : "There is snow on the floor, go find a hill and get sledging all day long! Wear a thick coat and gloves to day warm.",
       "image" : "sledge.png"
     }
   ],
