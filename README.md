@@ -13,10 +13,12 @@ After setting up the API Keys, a jar can easily be built using `gradlew jar` or 
 The resulting jar includes all the needed resources and libraries to run independently and will be located at `build/libs/group10.jar`.
 It can be run using `java -jar build/libs/group10.jar`
 
+A pre-built jar is included in the zip and can be run with `java -jar group10.jar` or by double clicking on `group10.jar`
+
 Alternatively opening this repo with an IDE with Gradle integration (e.g. IntelliJ) should automatically setup the project.
 The entry point to run is `uk.ac.cam.cl.interactiondesign.group10.Main` (this is included in the jar's manifest)
 
-The project requires Java 8 and has been tested on Windows 10 and Ubuntu 19.04
+The project requires Java 8 and has been tested on Windows 10
 
 Libraries
 ---
