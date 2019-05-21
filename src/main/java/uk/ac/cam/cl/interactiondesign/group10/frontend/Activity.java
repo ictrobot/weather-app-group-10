@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -36,7 +37,7 @@ public class Activity {
     // { "icon-name": [{"text": "", "image": ""}, ...], ...}
     try (InputStream jsonInStream = Activity.class.getResourceAsStream("/data/activities.json")) {
       JsonParser parser = new JsonParser();
-      JsonObject json = parser.parse(new InputStreamReader(jsonInStream)).getAsJsonObject();
+      JsonObject json = parser.parse(new InputStreamReader(jsonInStream, StandardCharsets.UTF_8)).getAsJsonObject();
       // interpret the JSON data and store in the map from weather icon string to a list of activities
       for (String weatherIcon : json.keySet()) {
         ArrayList<Activity> activities = new ArrayList<>();
